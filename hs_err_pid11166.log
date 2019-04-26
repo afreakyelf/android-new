@@ -1,0 +1,982 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 271056896 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2640), pid=11166, tid=0x00007f7afcafa700
+#
+# JRE version: OpenJDK Runtime Environment (8.0_152) (build 1.8.0_152-release-1343-b16-5323222)
+# Java VM: OpenJDK 64-Bit Server VM (25.152-b16-5323222 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f7b0c07a000):  VMThread [stack: 0x00007f7afc9fb000,0x00007f7afcafb000] [id=11174]
+
+Stack: [0x00007f7afc9fb000,0x00007f7afcafb000],  sp=0x00007f7afcaf9500,  free space=1017k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0x9ffc88]  VMError::report_and_die()+0x148
+V  [libjvm.so+0x4ce9aa]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0x8a
+V  [libjvm.so+0x8673d8]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0xd8
+V  [libjvm.so+0x86201f]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x1f
+V  [libjvm.so+0x8d839b]  PSVirtualSpace::expand_by(unsigned long)+0x5b
+V  [libjvm.so+0x8c91fb]  PSOldGen::expand_by(unsigned long) [clone .part.109]+0x1b
+V  [libjvm.so+0x8c93bb]  PSOldGen::expand(unsigned long) [clone .part.111]+0xdb
+V  [libjvm.so+0x8c9c98]  PSOldGen::resize(unsigned long)+0x188
+V  [libjvm.so+0x8cf27c]  PSParallelCompact::invoke_no_policy(bool)+0x94c
+V  [libjvm.so+0x8d633d]  PSScavenge::invoke()+0x17d
+V  [libjvm.so+0x88a7e3]  ParallelScavengeHeap::failed_mem_allocate(unsigned long)+0x63
+V  [libjvm.so+0xa01754]  VM_ParallelGCFailedAllocation::doit()+0x84
+V  [libjvm.so+0xa05bf7]  VM_Operation::evaluate()+0x47
+V  [libjvm.so+0xa04658]  VMThread::evaluate_operation(VM_Operation*)+0x2c8
+V  [libjvm.so+0xa04ab1]  VMThread::loop()+0x1f1
+V  [libjvm.so+0xa04ee2]  VMThread::run()+0x72
+V  [libjvm.so+0x864822]  java_start(Thread*)+0xf2
+
+VM_Operation (0x00007f7af4a75e50): ParallelGCFailedAllocation, mode: safepoint, requested by thread 0x00007f7aac001800
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007f7aa4003800 JavaThread "RMI RenewClean-[127.0.0.1:34341,org.jetbrains.kotlin.daemon.common.LoopbackNetworkInterface$ClientLoopbackSocketFactory@5bfbadb2]" daemon [_thread_blocked, id=24550, stack(0x00007f7aedf90000,0x00007f7aee091000)]
+  0x00007f7aac001800 JavaThread "RMI TCP Connection(26)-127.0.0.1" daemon [_thread_blocked, id=24549, stack(0x00007f7af497a000,0x00007f7af4a7b000)]
+  0x00007f7aac005000 JavaThread "RMI TCP Connection(24)-127.0.0.1" daemon [_thread_in_native, id=24137, stack(0x00007f7aef1fe000,0x00007f7aef2ff000)]
+  0x00007f7aac007000 JavaThread "RMI TCP Connection(25)-127.0.0.1" daemon [_thread_in_native, id=24131, stack(0x00007f7aee2b1000,0x00007f7aee3b2000)]
+  0x00007f7a90003000 JavaThread "RMI RenewClean-[127.0.0.1:34341,org.jetbrains.kotlin.daemon.common.LoopbackNetworkInterface$ClientLoopbackSocketFactory@596ad3d]" daemon [_thread_blocked, id=13908, stack(0x00007f7aef2ff000,0x00007f7aef400000)]
+  0x00007f7aa0011800 JavaThread "RMI Scheduler(0)" daemon [_thread_blocked, id=11189, stack(0x00007f7af4376000,0x00007f7af4477000)]
+  0x00007f7b0c00c800 JavaThread "DestroyJavaVM" [_thread_blocked, id=11169, stack(0x00007f7b15758000,0x00007f7b15858000)]
+  0x00007f7b0c338000 JavaThread "GC Daemon" daemon [_thread_blocked, id=11187, stack(0x00007f7af4778000,0x00007f7af4879000)]
+  0x00007f7b0c333800 JavaThread "RMI Reaper" [_thread_blocked, id=11186, stack(0x00007f7af4879000,0x00007f7af497a000)]
+  0x00007f7b0c326800 JavaThread "Timer-0" daemon [_thread_blocked, id=11184, stack(0x00007f7af4a7b000,0x00007f7af4b7c000)]
+  0x00007f7b0c321000 JavaThread "RMI TCP Accept-17095" daemon [_thread_in_native, id=11183, stack(0x00007f7af4b7c000,0x00007f7af4c7d000)]
+  0x00007f7b0c0ca000 JavaThread "Service Thread" daemon [_thread_blocked, id=11181, stack(0x00007f7afc015000,0x00007f7afc116000)]
+  0x00007f7b0c0bf000 JavaThread "C1 CompilerThread2" daemon [_thread_blocked, id=11180, stack(0x00007f7afc117000,0x00007f7afc217000)]
+  0x00007f7b0c0bd800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=11179, stack(0x00007f7afc218000,0x00007f7afc318000)]
+  0x00007f7b0c0ba800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=11178, stack(0x00007f7afc319000,0x00007f7afc419000)]
+  0x00007f7b0c0b9000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=11177, stack(0x00007f7afc419000,0x00007f7afc51a000)]
+  0x00007f7b0c086000 JavaThread "Finalizer" daemon [_thread_blocked, id=11176, stack(0x00007f7afc7f8000,0x00007f7afc8f9000)]
+  0x00007f7b0c081800 JavaThread "Reference Handler" daemon [_thread_blocked, id=11175, stack(0x00007f7afc8f9000,0x00007f7afc9fa000)]
+
+Other Threads:
+=>0x00007f7b0c07a000 VMThread [stack: 0x00007f7afc9fb000,0x00007f7afcafb000] [id=11174]
+  0x00007f7b0c0cd000 WatcherThread [stack: 0x00007f7af7f00000,0x00007f7af8000000] [id=11182]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007f7b0c008660] ExpandHeap_lock - owner thread: 0x00007f7b0c07a000
+[0x00007f7b0c008ce0] Threads_lock - owner thread: 0x00007f7b0c07a000
+[0x00007f7b0c0091e0] Heap_lock - owner thread: 0x00007f7aac001800
+
+Heap:
+ PSYoungGen      total 1096192K, used 0K [0x000000076b300000, 0x00000007bf080000, 0x00000007c0000000)
+  eden space 834048K, 0% used [0x000000076b300000,0x000000076b300000,0x000000079e180000)
+  from space 262144K, 0% used [0x00000007af080000,0x00000007af080000,0x00000007bf080000)
+  to   space 269824K, 0% used [0x000000079e180000,0x000000079e180000,0x00000007ae900000)
+ ParOldGen       total 329728K, used 265585K [0x00000006c1800000, 0x00000006d5a00000, 0x000000076b300000)
+  object space 329728K, 80% used [0x00000006c1800000,0x00000006d1b5c488,0x00000006d5a00000)
+ Metaspace       used 123532K, capacity 127569K, committed 127664K, reserved 1161216K
+  class space    used 14368K, capacity 15206K, committed 15280K, reserved 1048576K
+
+Card table byte_map: [0x00007f7b12787000,0x00007f7b12f7c000] byte_map_base: 0x00007f7b0f17b000
+
+Marking Bits: (ParMarkBitMap*) 0x00007f7b14e20f00
+ Begin Bits: [0x00007f7ad80c0000, 0x00007f7adc060000)
+ End Bits:   [0x00007f7adc060000, 0x00007f7ae0000000)
+
+Polling page: 0x00007f7b15879000
+
+CodeCache: size=245760Kb used=81971Kb max_used=81985Kb free=163788Kb
+ bounds [0x00007f7afd000000, 0x00007f7b02080000, 0x00007f7b0c000000]
+ total_blobs=24189 nmethods=23596 adapters=504
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 1202.451 Thread 0x00007f7b0c0bd800 30364       4       org.antlr.v4.runtime.atn.ATNConfigSet$ConfigEqualityComparator::equals (65 bytes)
+Event: 1202.454 Thread 0x00007f7b0c0bd800 nmethod 30364 0x00007f7b02019610 code [0x00007f7b02019780, 0x00007f7b02019938]
+Event: 1202.454 Thread 0x00007f7b0c0bd800 30173       4       org.antlr.v4.runtime.atn.ATNConfig::<init> (37 bytes)
+Event: 1202.456 Thread 0x00007f7b0c0bd800 nmethod 30173 0x00007f7b0201d1d0 code [0x00007f7b0201d320, 0x00007f7b0201d3d8]
+Event: 1202.456 Thread 0x00007f7b0c0bd800 30312       4       org.antlr.v4.runtime.misc.Array2DHashSet::getOrAddImpl (146 bytes)
+Event: 1202.491 Thread 0x00007f7b0c0bd800 nmethod 30312 0x00007f7b02017890 code [0x00007f7b02017ae0, 0x00007f7b02018958]
+Event: 1202.601 Thread 0x00007f7b0c0ba800 nmethod 30295 0x00007f7b020769d0 code [0x00007f7b02076dc0, 0x00007f7b02079a58]
+Event: 1203.247 Thread 0x00007f7b0c0bd800 30521       4       com.sun.tools.javac.comp.Enter::getEnv (9 bytes)
+Event: 1203.247 Thread 0x00007f7b0c0ba800 30523       4       java.lang.StringBuilder::append (8 bytes)
+Event: 1203.247 Thread 0x00007f7b0c0bf000 30522       3       com.sun.tools.javac.code.Types::hashCode (14 bytes)
+
+GC Heap History (10 events):
+Event: 346.742 GC heap after
+Heap after GC invocations=39 (full 6):
+ PSYoungGen      total 976896K, used 188379K [0x000000076b300000, 0x00000007bf900000, 0x00000007c0000000)
+  eden space 696320K, 0% used [0x000000076b300000,0x000000076b300000,0x0000000795b00000)
+  from space 280576K, 67% used [0x0000000795b00000,0x00000007a12f6ff8,0x00000007a6d00000)
+  to   space 292864K, 0% used [0x00000007adb00000,0x00000007adb00000,0x00000007bf900000)
+ ParOldGen       total 511488K, used 456261K [0x00000006c1800000, 0x00000006e0b80000, 0x000000076b300000)
+  object space 511488K, 89% used [0x00000006c1800000,0x00000006dd5914d8,0x00000006e0b80000)
+ Metaspace       used 105984K, capacity 109175K, committed 109232K, reserved 1144832K
+  class space    used 12249K, capacity 12921K, committed 12976K, reserved 1048576K
+}
+Event: 346.742 GC heap before
+{Heap before GC invocations=40 (full 7):
+ PSYoungGen      total 976896K, used 188379K [0x000000076b300000, 0x00000007bf900000, 0x00000007c0000000)
+  eden space 696320K, 0% used [0x000000076b300000,0x000000076b300000,0x0000000795b00000)
+  from space 280576K, 67% used [0x0000000795b00000,0x00000007a12f6ff8,0x00000007a6d00000)
+  to   space 292864K, 0% used [0x00000007adb00000,0x00000007adb00000,0x00000007bf900000)
+ ParOldGen       total 511488K, used 456261K [0x00000006c1800000, 0x00000006e0b80000, 0x000000076b300000)
+  object space 511488K, 89% used [0x00000006c1800000,0x00000006dd5914d8,0x00000006e0b80000)
+ Metaspace       used 105984K, capacity 109175K, committed 109232K, reserved 1144832K
+  class space    used 12249K, capacity 12921K, committed 12976K, reserved 1048576K
+Event: 347.303 GC heap after
+Heap after GC invocations=40 (full 7):
+ PSYoungGen      total 976896K, used 0K [0x000000076b300000, 0x00000007bf900000, 0x00000007c0000000)
+  eden space 696320K, 0% used [0x000000076b300000,0x000000076b300000,0x0000000795b00000)
+  from space 280576K, 0% used [0x0000000795b00000,0x0000000795b00000,0x00000007a6d00000)
+  to   space 292864K, 0% used [0x00000007adb00000,0x00000007adb00000,0x00000007bf900000)
+ ParOldGen       total 329728K, used 56461K [0x00000006c1800000, 0x00000006d5a00000, 0x000000076b300000)
+  object space 329728K, 17% used [0x00000006c1800000,0x00000006c4f23408,0x00000006d5a00000)
+ Metaspace       used 105984K, capacity 109175K, committed 109232K, reserved 1144832K
+  class space    used 12249K, capacity 12921K, committed 12976K, reserved 1048576K
+}
+Event: 1190.602 GC heap before
+{Heap before GC invocations=41 (full 7):
+ PSYoungGen      total 976896K, used 696320K [0x000000076b300000, 0x00000007bf900000, 0x00000007c0000000)
+  eden space 696320K, 100% used [0x000000076b300000,0x0000000795b00000,0x0000000795b00000)
+  from space 280576K, 0% used [0x0000000795b00000,0x0000000795b00000,0x00000007a6d00000)
+  to   space 292864K, 0% used [0x00000007adb00000,0x00000007adb00000,0x00000007bf900000)
+ ParOldGen       total 329728K, used 56461K [0x00000006c1800000, 0x00000006d5a00000, 0x000000076b300000)
+  object space 329728K, 17% used [0x00000006c1800000,0x00000006c4f23408,0x00000006d5a00000)
+ Metaspace       used 108439K, capacity 111887K, committed 112176K, reserved 1148928K
+  class space    used 12487K, capacity 13253K, committed 13360K, reserved 1048576K
+Event: 1190.762 GC heap after
+Heap after GC invocations=41 (full 7):
+ PSYoungGen      total 1057792K, used 102870K [0x000000076b300000, 0x00000007bda80000, 0x00000007c0000000)
+  eden space 796160K, 0% used [0x000000076b300000,0x000000076b300000,0x000000079bc80000)
+  from space 261632K, 39% used [0x00000007adb00000,0x00000007b3f75b38,0x00000007bda80000)
+  to   space 277504K, 0% used [0x000000079bc80000,0x000000079bc80000,0x00000007acb80000)
+ ParOldGen       total 329728K, used 56469K [0x00000006c1800000, 0x00000006d5a00000, 0x000000076b300000)
+  object space 329728K, 17% used [0x00000006c1800000,0x00000006c4f25408,0x00000006d5a00000)
+ Metaspace       used 108439K, capacity 111887K, committed 112176K, reserved 1148928K
+  class space    used 12487K, capacity 13253K, committed 13360K, reserved 1048576K
+}
+Event: 1196.794 GC heap before
+{Heap before GC invocations=42 (full 7):
+ PSYoungGen      total 1057792K, used 899030K [0x000000076b300000, 0x00000007bda80000, 0x00000007c0000000)
+  eden space 796160K, 100% used [0x000000076b300000,0x000000079bc80000,0x000000079bc80000)
+  from space 261632K, 39% used [0x00000007adb00000,0x00000007b3f75b38,0x00000007bda80000)
+  to   space 277504K, 0% used [0x000000079bc80000,0x000000079bc80000,0x00000007acb80000)
+ ParOldGen       total 329728K, used 56469K [0x00000006c1800000, 0x00000006d5a00000, 0x000000076b300000)
+  object space 329728K, 17% used [0x00000006c1800000,0x00000006c4f25408,0x00000006d5a00000)
+ Metaspace       used 117700K, capacity 121493K, committed 121648K, reserved 1157120K
+  class space    used 13714K, capacity 14526K, committed 14640K, reserved 1048576K
+Event: 1197.000 GC heap after
+Heap after GC invocations=42 (full 7):
+ PSYoungGen      total 1073664K, used 160761K [0x000000076b300000, 0x00000007c0000000, 0x00000007c0000000)
+  eden space 796160K, 0% used [0x000000076b300000,0x000000076b300000,0x000000079bc80000)
+  from space 277504K, 57% used [0x000000079bc80000,0x00000007a597e4a0,0x00000007acb80000)
+  to   space 278016K, 0% used [0x00000007af080000,0x00000007af080000,0x00000007c0000000)
+ ParOldGen       total 329728K, used 56477K [0x00000006c1800000, 0x00000006d5a00000, 0x000000076b300000)
+  object space 329728K, 17% used [0x00000006c1800000,0x00000006c4f27408,0x00000006d5a00000)
+ Metaspace       used 117700K, capacity 121493K, committed 121648K, reserved 1157120K
+  class space    used 13714K, capacity 14526K, committed 14640K, reserved 1048576K
+}
+Event: 1203.247 GC heap before
+{Heap before GC invocations=43 (full 7):
+ PSYoungGen      total 1073664K, used 956921K [0x000000076b300000, 0x00000007c0000000, 0x00000007c0000000)
+  eden space 796160K, 100% used [0x000000076b300000,0x000000079bc80000,0x000000079bc80000)
+  from space 277504K, 57% used [0x000000079bc80000,0x00000007a597e4a0,0x00000007acb80000)
+  to   space 278016K, 0% used [0x00000007af080000,0x00000007af080000,0x00000007c0000000)
+ ParOldGen       total 329728K, used 56477K [0x00000006c1800000, 0x00000006d5a00000, 0x000000076b300000)
+  object space 329728K, 17% used [0x00000006c1800000,0x00000006c4f27408,0x00000006d5a00000)
+ Metaspace       used 123532K, capacity 127569K, committed 127664K, reserved 1161216K
+  class space    used 14368K, capacity 15206K, committed 15280K, reserved 1048576K
+Event: 1203.489 GC heap after
+Heap after GC invocations=43 (full 7):
+ PSYoungGen      total 1096192K, used 76039K [0x000000076b300000, 0x00000007bf080000, 0x00000007c0000000)
+  eden space 834048K, 0% used [0x000000076b300000,0x000000076b300000,0x000000079e180000)
+  from space 262144K, 29% used [0x00000007af080000,0x00000007b3ac1e08,0x00000007bf080000)
+  to   space 269824K, 0% used [0x000000079e180000,0x000000079e180000,0x00000007ae900000)
+ ParOldGen       total 329728K, used 206097K [0x00000006c1800000, 0x00000006d5a00000, 0x000000076b300000)
+  object space 329728K, 62% used [0x00000006c1800000,0x00000006ce144798,0x00000006d5a00000)
+ Metaspace       used 123532K, capacity 127569K, committed 127664K, reserved 1161216K
+  class space    used 14368K, capacity 15206K, committed 15280K, reserved 1048576K
+}
+Event: 1203.489 GC heap before
+{Heap before GC invocations=44 (full 8):
+ PSYoungGen      total 1096192K, used 76039K [0x000000076b300000, 0x00000007bf080000, 0x00000007c0000000)
+  eden space 834048K, 0% used [0x000000076b300000,0x000000076b300000,0x000000079e180000)
+  from space 262144K, 29% used [0x00000007af080000,0x00000007b3ac1e08,0x00000007bf080000)
+  to   space 269824K, 0% used [0x000000079e180000,0x000000079e180000,0x00000007ae900000)
+ ParOldGen       total 329728K, used 206097K [0x00000006c1800000, 0x00000006d5a00000, 0x000000076b300000)
+  object space 329728K, 62% used [0x00000006c1800000,0x00000006ce144798,0x00000006d5a00000)
+ Metaspace       used 123532K, capacity 127569K, committed 127664K, reserved 1161216K
+  class space    used 14368K, capacity 15206K, committed 15280K, reserved 1048576K
+
+Deoptimization events (10 events):
+Event: 1201.680 Thread 0x00007f7aac001800 Uncommon trap: reason=speculate_class_check action=maybe_recompile pc=0x00007f7aff3b6f80 method=com.sun.tools.javac.code.Types$SameTypeVisitor.visitType(Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/code/Type;)Ljava/lang/Boolean; @ 149
+Event: 1201.681 Thread 0x00007f7aac001800 Uncommon trap: reason=speculate_class_check action=maybe_recompile pc=0x00007f7aff3b6f80 method=com.sun.tools.javac.code.Types$SameTypeVisitor.visitType(Lcom/sun/tools/javac/code/Type;Lcom/sun/tools/javac/code/Type;)Ljava/lang/Boolean; @ 149
+Event: 1201.681 Thread 0x00007f7aac001800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f7afde2e4b8 method=com.sun.tools.javac.code.Types$HasSameArgs.visitMethodType(Lcom/sun/tools/javac/code/Type$MethodType;Ljava/lang/Object;)Ljava/lang/Object; @ 3
+Event: 1201.681 Thread 0x00007f7aac001800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007f7afde2e4b8 method=com.sun.tools.javac.code.Types$HasSameArgs.visitMethodType(Lcom/sun/tools/javac/code/Type$MethodType;Ljava/lang/Object;)Ljava/lang/Object; @ 3
+Event: 1201.825 Thread 0x00007f7aac001800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f7b01b53110 method=com.squareup.javapoet.TypeName.get(Ljavax/lang/model/type/TypeMirror;Ljava/util/Map;)Lcom/squareup/javapoet/TypeName; @ 10
+Event: 1201.826 Thread 0x00007f7aac001800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f7b01b53110 method=com.squareup.javapoet.TypeName.get(Ljavax/lang/model/type/TypeMirror;Ljava/util/Map;)Lcom/squareup/javapoet/TypeName; @ 10
+Event: 1201.834 Thread 0x00007f7aac001800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f7b01b53110 method=com.squareup.javapoet.TypeName.get(Ljavax/lang/model/type/TypeMirror;Ljava/util/Map;)Lcom/squareup/javapoet/TypeName; @ 10
+Event: 1201.835 Thread 0x00007f7aac001800 Uncommon trap: reason=bimorphic action=maybe_recompile pc=0x00007f7b01b53110 method=com.squareup.javapoet.TypeName.get(Ljavax/lang/model/type/TypeMirror;Ljava/util/Map;)Lcom/squareup/javapoet/TypeName; @ 10
+Event: 1201.864 Thread 0x00007f7aac001800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f7b01b59908 method=com.squareup.javapoet.CodeWriter.emitLiteral(Ljava/lang/Object;)V @ 4
+Event: 1201.964 Thread 0x00007f7aac001800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00007f7b01b17140 method=com.squareup.javapoet.CodeWriter.emitAndIndent(Ljava/lang/String;)Lcom/squareup/javapoet/CodeWriter; @ 106
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 345.501 Thread 0x00007f7aac007000 Exception <a 'sun/nio/fs/UnixException'> (0x0000000794093390) thrown at [/buildbot/src/googleplex-android/openjdk/out/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 345.514 Thread 0x00007f7aac007000 Exception <a 'sun/nio/fs/UnixException'> (0x00000007940981a8) thrown at [/buildbot/src/googleplex-android/openjdk/out/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 345.514 Thread 0x00007f7aac007000 Exception <a 'java/io/FileNotFoundException'> (0x0000000794099be0) thrown at [/buildbot/src/googleplex-android/openjdk/out/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 345.514 Thread 0x00007f7aac007000 Exception <a 'java/io/FileNotFoundException'> (0x000000079409b478) thrown at [/buildbot/src/googleplex-android/openjdk/out/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 434.106 Thread 0x00007f7a84001000 Exception <a 'java/lang/InterruptedException'> (0x00000007726b5698) thrown at [/buildbot/src/googleplex-android/openjdk/out/hotspot/src/share/vm/runtime/objectMonitor.cpp, line 1684]
+Event: 1152.667 Thread 0x00007f7a900bd000 Exception <a 'java/lang/InterruptedException'> (0x0000000779cb9440) thrown at [/buildbot/src/googleplex-android/openjdk/out/hotspot/src/share/vm/runtime/objectMonitor.cpp, line 1684]
+Event: 1183.566 Thread 0x00007f7aa4003800 Exception <a 'java/lang/InterruptedException'> (0x0000000781a26f98) thrown at [/buildbot/src/googleplex-android/openjdk/out/hotspot/src/share/vm/runtime/objectMonitor.cpp, line 1684]
+Event: 1196.738 Thread 0x00007f7aac001800 Implicit null exception at 0x00007f7b019b2757 to 0x00007f7b019b2979
+Event: 1198.093 Thread 0x00007f7aac001800 Implicit null exception at 0x00007f7b01b3f6b5 to 0x00007f7b01b3f7f9
+Event: 1198.093 Thread 0x00007f7aac001800 Implicit null exception at 0x00007f7b01b49dec to 0x00007f7b01b49ee7
+
+Events (10 events):
+Event: 1201.961 loading class android/arch/persistence/room/writer/DatabaseWriter$createCreateInvalidationTracker$1$tableNames$1
+Event: 1201.961 loading class android/arch/persistence/room/writer/DatabaseWriter$createCreateInvalidationTracker$1$tableNames$1 done
+Event: 1201.962 loading class android/arch/persistence/room/writer/EntityDeleteComparator
+Event: 1201.962 loading class android/arch/persistence/room/writer/EntityDeleteComparator done
+Event: 1201.964 Thread 0x00007f7aac001800 Uncommon trap: trap_request=0xffffff65 fr.pc=0x00007f7b01b17140
+Event: 1201.964 Thread 0x00007f7aac001800 DEOPT PACKING pc=0x00007f7b01b17140 sp=0x00007f7af4a75400
+Event: 1201.964 Thread 0x00007f7aac001800 DEOPT UNPACKING pc=0x00007f7afd04547a sp=0x00007f7af4a753b0 mode 2
+Event: 1201.973 loading class com/google/auto/common/BasicAnnotationProcessor$1
+Event: 1201.973 loading class com/google/auto/common/BasicAnnotationProcessor$1 done
+Event: 1202.843 Executing VM operation: ParallelGCFailedAllocation
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 08:0a 2887657                            /home/proxima/Downloads/android-studio/jre/jre/bin/java
+00401000-00402000 rw-p 00000000 08:0a 2887657                            /home/proxima/Downloads/android-studio/jre/jre/bin/java
+02118000-02139000 rw-p 00000000 00:00 0                                  [heap]
+6c1800000-6d5a00000 rw-p 00000000 00:00 0 
+6e5c80000-76b300000 ---p 00000000 00:00 0 
+76b300000-7bf080000 rw-p 00000000 00:00 0 
+7bf080000-7c0000000 ---p 00000000 00:00 0 
+7c0000000-7c0eec000 rw-p 00000000 00:00 0 
+7c0eec000-800000000 ---p 00000000 00:00 0 
+7f7a84000000-7f7a84af3000 rw-p 00000000 00:00 0 
+7f7a84af3000-7f7a88000000 ---p 00000000 00:00 0 
+7f7a88000000-7f7a88021000 rw-p 00000000 00:00 0 
+7f7a88021000-7f7a8c000000 ---p 00000000 00:00 0 
+7f7a8c000000-7f7a8ce4f000 rw-p 00000000 00:00 0 
+7f7a8ce4f000-7f7a90000000 ---p 00000000 00:00 0 
+7f7a90000000-7f7a903b2000 rw-p 00000000 00:00 0 
+7f7a903b2000-7f7a94000000 ---p 00000000 00:00 0 
+7f7a94000000-7f7a94021000 rw-p 00000000 00:00 0 
+7f7a94021000-7f7a98000000 ---p 00000000 00:00 0 
+7f7a98000000-7f7a98da4000 rw-p 00000000 00:00 0 
+7f7a98da4000-7f7a9c000000 ---p 00000000 00:00 0 
+7f7a9c000000-7f7a9c021000 rw-p 00000000 00:00 0 
+7f7a9c021000-7f7aa0000000 ---p 00000000 00:00 0 
+7f7aa0000000-7f7aa0ea0000 rw-p 00000000 00:00 0 
+7f7aa0ea0000-7f7aa4000000 ---p 00000000 00:00 0 
+7f7aa4000000-7f7aa4eaf000 rw-p 00000000 00:00 0 
+7f7aa4eaf000-7f7aa8000000 ---p 00000000 00:00 0 
+7f7aa8000000-7f7aa8021000 rw-p 00000000 00:00 0 
+7f7aa8021000-7f7aac000000 ---p 00000000 00:00 0 
+7f7aac000000-7f7aac021000 rw-p 00000000 00:00 0 
+7f7aac021000-7f7ab0000000 ---p 00000000 00:00 0 
+7f7ab0000000-7f7ab0021000 rw-p 00000000 00:00 0 
+7f7ab0021000-7f7ab4000000 ---p 00000000 00:00 0 
+7f7ab4000000-7f7ab4021000 rw-p 00000000 00:00 0 
+7f7ab4021000-7f7ab8000000 ---p 00000000 00:00 0 
+7f7ab8000000-7f7ab8021000 rw-p 00000000 00:00 0 
+7f7ab8021000-7f7abc000000 ---p 00000000 00:00 0 
+7f7abc000000-7f7abe335000 rw-p 00000000 00:00 0 
+7f7abe335000-7f7ac0000000 ---p 00000000 00:00 0 
+7f7ac0000000-7f7ac1ae3000 rw-p 00000000 00:00 0 
+7f7ac1ae3000-7f7ac4000000 ---p 00000000 00:00 0 
+7f7ac4000000-7f7ac4021000 rw-p 00000000 00:00 0 
+7f7ac4021000-7f7ac8000000 ---p 00000000 00:00 0 
+7f7ac8000000-7f7aca42a000 rw-p 00000000 00:00 0 
+7f7aca42a000-7f7acc000000 ---p 00000000 00:00 0 
+7f7acc000000-7f7acc021000 rw-p 00000000 00:00 0 
+7f7acc021000-7f7ad0000000 ---p 00000000 00:00 0 
+7f7ad0000000-7f7ad0021000 rw-p 00000000 00:00 0 
+7f7ad0021000-7f7ad4000000 ---p 00000000 00:00 0 
+7f7ad4000000-7f7ad42bf000 rw-p 00000000 00:00 0 
+7f7ad42bf000-7f7ad8000000 ---p 00000000 00:00 0 
+7f7ad80c0000-7f7ae0000000 rw-p 00000000 00:00 0 
+7f7ae0000000-7f7ae0021000 rw-p 00000000 00:00 0 
+7f7ae0021000-7f7ae4000000 ---p 00000000 00:00 0 
+7f7ae4c9b000-7f7ae4e5b000 rw-p 00000000 00:00 0 
+7f7ae4e5b000-7f7ae4e9b000 ---p 00000000 00:00 0 
+7f7ae4e9b000-7f7ae4f80000 r-xp 00000000 08:0a 3548137                    /tmp/room-eabca0b4-bd72-4e9a-a484-a3c4ae65802a/sqlite-3.20.1-8df1f655-ae4e-4799-941e-5d5c3c6b9d25-libsqlitejdbc.so
+7f7ae4f80000-7f7ae517f000 ---p 000e5000 08:0a 3548137                    /tmp/room-eabca0b4-bd72-4e9a-a484-a3c4ae65802a/sqlite-3.20.1-8df1f655-ae4e-4799-941e-5d5c3c6b9d25-libsqlitejdbc.so
+7f7ae517f000-7f7ae5184000 rw-p 000e4000 08:0a 3548137                    /tmp/room-eabca0b4-bd72-4e9a-a484-a3c4ae65802a/sqlite-3.20.1-8df1f655-ae4e-4799-941e-5d5c3c6b9d25-libsqlitejdbc.so
+7f7ae5184000-7f7ae5385000 rw-p 00000000 00:00 0 
+7f7ae5385000-7f7ae5585000 rw-p 00000000 00:00 0 
+7f7ae5585000-7f7ae5785000 rw-p 00000000 00:00 0 
+7f7ae5785000-7f7ae5985000 rw-p 00000000 00:00 0 
+7f7ae5985000-7f7ae5b85000 rw-p 00000000 00:00 0 
+7f7ae5b85000-7f7ae5d85000 rw-p 00000000 00:00 0 
+7f7ae5d85000-7f7ae5f85000 rw-p 00000000 00:00 0 
+7f7ae5f85000-7f7ae6185000 rw-p 00000000 00:00 0 
+7f7ae6185000-7f7ae626a000 r-xp 00000000 08:0a 3548133                    /tmp/room-3882c8b5-be43-4104-9f3b-e46ced000363/sqlite-3.20.1-5ba053db-2ed6-421d-a403-b0aa24283fd9-libsqlitejdbc.so
+7f7ae626a000-7f7ae6469000 ---p 000e5000 08:0a 3548133                    /tmp/room-3882c8b5-be43-4104-9f3b-e46ced000363/sqlite-3.20.1-5ba053db-2ed6-421d-a403-b0aa24283fd9-libsqlitejdbc.so
+7f7ae6469000-7f7ae646e000 rw-p 000e4000 08:0a 3548133                    /tmp/room-3882c8b5-be43-4104-9f3b-e46ced000363/sqlite-3.20.1-5ba053db-2ed6-421d-a403-b0aa24283fd9-libsqlitejdbc.so
+7f7ae646e000-7f7ae666f000 rw-p 00000000 00:00 0 
+7f7ae666f000-7f7ae686f000 rw-p 00000000 00:00 0 
+7f7ae686f000-7f7ae6a6f000 rw-p 00000000 00:00 0 
+7f7ae6a6f000-7f7ae6c6f000 rw-p 00000000 00:00 0 
+7f7ae6c6f000-7f7ae6e6f000 rw-p 00000000 00:00 0 
+7f7ae6e6f000-7f7ae6e70000 r--s 00000000 08:0a 2763067                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-wallet-license-12.0.0.aar/7ea937d3df79376696630bc62ea0e8da/jars/classes.jar
+7f7ae6e70000-7f7ae6e71000 r--s 00000000 08:0a 1723893                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-vision-license-12.0.0.aar/3bd93d7831fdc2ff7113c0a544f4390e/jars/classes.jar
+7f7ae6e71000-7f7ae6e72000 r--s 00000000 08:0a 5534741                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-vision-common-license-12.0.0.aar/bff5e6e8f9eef8d7a2d03c8e9f221636/jars/classes.jar
+7f7ae6e72000-7f7ae6e73000 r--s 00000000 08:0a 4221156                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-12.0.0.aar/34f248ee4e76e706fe57586b2144d089/jars/classes.jar
+7f7ae6e73000-7f7ae6e74000 r--s 00000000 08:0a 2763062                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-tagmanager-v4-impl-license-12.0.0.aar/38a3755a079fe14a9f7f5bad3703547b/jars/classes.jar
+7f7ae6e74000-7f7ae6e75000 r--s 00000000 08:0a 3958614                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-tagmanager-license-12.0.0.aar/9c4a99cfc5043aa276534e6b53ca2239/jars/classes.jar
+7f7ae6e75000-7f7ae6e76000 r--s 00000000 08:0a 2763057                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-tagmanager-api-license-12.0.0.aar/f5571c6f412aa4690418548819ada357/jars/classes.jar
+7f7ae6e76000-7f7ae6e77000 r--s 00000000 08:0a 2763052                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-safetynet-license-12.0.0.aar/3bc48143bd1d210d6949ddaa00089016/jars/classes.jar
+7f7ae6e77000-7f7ae6e78000 r--s 00000000 08:0a 1989077                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-plus-license-12.0.0.aar/e325b1b7cb034f1a98688456fb5748c8/jars/classes.jar
+7f7ae6e78000-7f7ae6e79000 r--s 00000000 08:0a 4610425                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-places-license-12.0.0.aar/9247c9c684529a6aaed6b43632f16a16/jars/classes.jar
+7f7ae6e79000-7f7ae6e7a000 r--s 00000000 08:0a 5656901                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-panorama-license-12.0.0.aar/89f2b447bd0f418a44eddd390cae5bf1/jars/classes.jar
+7f7ae6e7a000-7f7ae6e7b000 r--s 00000000 08:0a 2763037                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-nearby-license-12.0.0.aar/07a7cbd299521d21d7907a4d3e9973ea/jars/classes.jar
+7f7ae6e7b000-7f7ae6e7c000 r--s 00000000 08:0a 5269146                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-license-12.0.0.aar/c619ef758f2d878e0d6dd2fbb4475e10/jars/classes.jar
+7f7ae6e7c000-7f7ae6e7d000 r--s 00000000 08:0a 2763047                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-analytics-license-12.0.0.aar/5b374a17a00ca7fd2d31348426e122ef/jars/classes.jar
+7f7ae6e7d000-7f7ae6e7e000 r--s 00000000 08:0a 2763042                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-maps-license-12.0.0.aar/6f755f1e7eac36e6b8c5d4988a629b63/jars/classes.jar
+7f7ae6e7e000-7f7ae6e7f000 r--s 00000000 08:0a 6319566                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-location-license-12.0.0.aar/cae14fa799aadd27ed54abc0aa9af818/jars/classes.jar
+7f7ae6e7f000-7f7ae6e80000 r--s 00000000 08:0a 2249527                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-instantapps-license-12.0.0.aar/ff003ee20f1697ffeb86cd92b417c271/jars/classes.jar
+7f7ae6e80000-7f7ae6e81000 r--s 00000000 08:0a 2763027                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-iid-license-12.0.0.aar/986dbf6d63e29fc2c226f007c0e5cded/jars/classes.jar
+7f7ae6e81000-7f7ae6e82000 r--s 00000000 08:0a 2763032                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-identity-license-12.0.0.aar/47a676d68f750e3710bb5a32962a4f5b/jars/classes.jar
+7f7ae6e82000-7f7ae6e83000 r--s 00000000 08:0a 4878461                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-appindexing-license-12.0.0.aar/27ab7ba9400148e9c429dbbcd9bfdd79/jars/classes.jar
+7f7ae6e83000-7f7ae6e84000 r--s 00000000 08:0a 4082136                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-gcm-license-12.0.0.aar/a9db6f6c7e503dd06eed21caa40531f7/jars/classes.jar
+7f7ae6e84000-7f7ae6e85000 r--s 00000000 08:0a 2763022                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-gass-license-12.0.0.aar/ec8453e81da4f8117ea800d204402d33/jars/classes.jar
+7f7ae6e85000-7f7ae6e86000 r--s 00000000 08:0a 2763017                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-games-license-12.0.0.aar/e3d5109ee5fa7aca1aa87a1f72ad0f65/jars/classes.jar
+7f7ae6e86000-7f7ae6e87000 r--s 00000000 08:0a 2763008                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-fitness-license-12.0.0.aar/ed6eb53919dcf1f4abdd89bae77573a0/jars/classes.jar
+7f7ae6e87000-7f7ae6e88000 r--s 00000000 08:0a 2140961                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-storage-common-license-12.0.0.aar/a7d3a7e413d22273014c271c88b62315/jars/classes.jar
+7f7ae6e88000-7f7ae6e89000 r--s 00000000 08:0a 4878456                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-storage-license-12.0.0.aar/9f428cf8c28042cb46f74551ada4ede1/jars/classes.jar
+7f7ae6e89000-7f7ae6e8a000 r--s 00000000 08:0a 3958609                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-dynamic-links-license-12.0.0.aar/59feee88697cd61da21b8c16a19daac2/jars/classes.jar
+7f7ae6e8a000-7f7ae6e8b000 r--s 00000000 08:0a 2763011                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-database-license-12.0.0.aar/95393cbc89cad342544985e8ab2ec48e/jars/classes.jar
+7f7ae6e8b000-7f7ae6e8c000 r--s 00000000 08:0a 2762995                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-database-connection-license-12.0.0.aar/80b76e073b141571f334e9fcacc0f112/jars/classes.jar
+7f7ae6e8c000-7f7ae6e8d000 r--s 00000000 08:0a 2763002                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-auth-license-12.0.0.aar/a3fbcf99468a46fe77f7fe427b7db886/jars/classes.jar
+7f7ae6e8d000-7f7ae6e8e000 r--s 00000000 08:0a 2762986                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-fido-license-12.0.0.aar/3c29fb579d69f837795f9706bd354213/jars/classes.jar
+7f7ae6e8e000-7f7ae6e8f000 r--s 00000000 08:0a 2762988                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-drive-license-12.0.0.aar/d0903915ed268a0b40f2f02a97c29d0f/jars/classes.jar
+7f7ae6e8f000-7f7ae6e90000 r--s 00000000 08:0a 6319564                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-crash-license-12.0.0.aar/c2193c5a3e9e798c427aedbc93c0b08b/jars/classes.jar
+7f7ae6e90000-7f7ae6e91000 r--s 00000000 08:0a 4743889                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-awareness-license-12.0.0.aar/3b64194d3a70fad664281c186a613852/jars/classes.jar
+7f7ae6e91000-7f7ae6e92000 r--s 00000000 08:0a 2762982                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-cast-license-12.0.0.aar/1bfa6bc3093840c42f1739c68192ffe2/jars/classes.jar
+7f7ae6e92000-7f7ae6e93000 r--s 00000000 08:0a 2762967                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-cast-framework-license-12.0.0.aar/d48292789bf80039da5887138ae94aa8/jars/classes.jar
+7f7ae6e93000-7f7ae6e94000 r--s 00000000 08:0a 2762978                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-base-license-12.0.0.aar/da9212ebaac55c643ee19d7931070b8a/jars/classes.jar
+7f7ae6e94000-7f7ae6e95000 r--s 00000000 08:0a 2762962                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-license-12.0.0.aar/25e8f4a44fb485df0b313698bfdb3c77/jars/classes.jar
+7f7ae6e95000-7f7ae6e96000 r--s 00000000 08:0a 2762973                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-license-12.0.0.aar/627425a958e8ab9ee9ca165a70a7c585/jars/classes.jar
+7f7ae6e96000-7f7ae6e97000 r--s 00000000 08:0a 5138999                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-appinvite-license-12.0.0.aar/b11d033a4f8d1385649e664be042874b/jars/classes.jar
+7f7ae6e97000-7f7ae6e98000 r--s 00000000 08:0a 2140954                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-analytics-impl-license-12.0.0.aar/cca2473a4d2b8b7254d184e457bf6bac/jars/classes.jar
+7f7ae6e98000-7f7ae6e99000 r--s 00000000 08:0a 6319562                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-analytics-license-12.0.0.aar/c41a82f82d3a6d9004e18d9ae7a60323/jars/classes.jar
+7f7ae6e99000-7f7ae6e9a000 r--s 00000000 08:0a 2762957                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-license-12.0.0.aar/c3817b4b0a5184be81db9ea644da090d/jars/classes.jar
+7f7ae6e9a000-7f7ae6e9b000 r--s 00000000 08:0a 5269142                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-ads-license-12.0.0.aar/d695b0091d46c843b09aad1803725116/jars/classes.jar
+7f7ae6e9b000-7f7ae6e9c000 r--s 00000000 08:0a 2762943                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-common-license-12.0.0.aar/5135380d8aff476800020bc0f3b6fa9c/jars/classes.jar
+7f7ae6e9c000-7f7ae6e9d000 r--s 00000000 08:0a 2762948                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-12.0.0.aar/8d9825d922837bb2eceea2af8b826f2e/jars/classes.jar
+7f7ae6e9d000-7f7ae6e9e000 r--s 00000000 08:0a 2511269                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-12.0.0.aar/9e49ec9e48709a8cac37a38849d7d9f4/jars/classes.jar
+7f7ae6e9e000-7f7ae6e9f000 r--s 00000000 08:0a 3565308                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.reactivestreams/reactive-streams/1.0.2/323964c36556eb0e6209f65c1cef72b53b461ab8/reactive-streams-1.0.2.jar
+7f7ae6e9f000-7f7ae6ea1000 r--s 00000000 08:0a 2762953                    /home/proxima/.gradle/caches/transforms-1/files-1.1/answers-shim-0.0.6.aar/e6c25feb86e1325dfefe65093450c32d/jars/classes.jar
+7f7ae6ea1000-7f7ae6ea3000 r--s 00006000 08:0a 3548067                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/2.0.1/516c03b21d50a644d538de0f0369c620989cd8f0/jsr305-2.0.1.jar
+7f7ae6ea3000-7f7ae6ea5000 r--s 00009000 08:0a 3565334                    /home/proxima/.gradle/caches/modules-2/files-2.1/commons-cli/commons-cli/1.2/2bf96b7aa8b611c177d329452af1dc933e14501c/commons-cli-1.2.jar
+7f7ae6ea5000-7f7ae6ea6000 r--s 00000000 08:0a 4610415                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-config-license-12.0.0.aar/08632355dfcc7e09a2aaaa3edd081541/jars/classes.jar
+7f7ae6ea6000-7f7ae6ea7000 r--s 00000000 08:0a 4221151                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-messaging-license-12.0.0.aar/0dabc567c74a2ae2983cc46c0334ca10/jars/classes.jar
+7f7ae6ea7000-7f7ae6ea9000 r--s 0001c000 08:0a 3548199                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.android.support.constraint/constraint-layout-solver/1.1.3/bde0667d7414c16ed62d3cfe993cff7f9d732373/constraint-layout-solver-1.1.3.jar
+7f7ae6ea9000-7f7ae6eaf000 r--s 00036000 08:0a 3958598                    /home/proxima/.gradle/caches/transforms-1/files-1.1/fabric-1.4.1.aar/97e74cae3a75470f19b9b644e8ed47cb/jars/classes.jar
+7f7ae6eaf000-7f7ae6eb1000 r--s 00010000 08:0a 2762939                    /home/proxima/.gradle/caches/transforms-1/files-1.1/answers-1.4.1.aar/66d76ad6648b5c60fcf3b5729ed80dff/jars/classes.jar
+7f7ae6eb1000-7f7ae6eb2000 r--s 00004000 08:0a 2762936                    /home/proxima/.gradle/caches/transforms-1/files-1.1/beta-1.2.7.aar/ae51e7d44ac6228098dbfeb71d2f659c/jars/classes.jar
+7f7ae6eb2000-7f7ae6eb6000 r--s 00027000 08:0a 2249524                    /home/proxima/.gradle/caches/transforms-1/files-1.1/crashlytics-core-2.5.0.aar/0f79a4d8ce0207400a5895e4ebe56e5f/jars/classes.jar
+7f7ae6eb6000-7f7ae6eb9000 r--s 0001b000 08:0a 3565333                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar
+7f7ae6eb9000-7f7ae6eba000 r--s 00014000 08:0a 3552718                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.14.0/102d7be47241d781ef95f1581d414b0943053130/okio-1.14.0.jar
+7f7ae6eba000-7f7ae6ec2000 r--s 0007d000 08:0a 3565332                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.google.zxing/core/3.3.0/73c49077166faa4c3c0059c5f583d1d7bd1475fe/core-3.3.0.jar
+7f7ae6ec2000-7f7ae6ec4000 r--s 00019000 08:0a 2511264                    /home/proxima/.gradle/caches/transforms-1/files-1.1/zxing-android-embedded-3.1.0.aar/9af54222e23ac5909827777492e8b031/jars/classes.jar
+7f7ae6ec4000-7f7ae6ec5000 r--s 00001000 08:0a 5138995                    /home/proxima/.gradle/caches/transforms-1/files-1.1/espresso-idling-resource-3.0.0.aar/668c2fc18db0e252556d49c199362ba5/jars/classes.jar
+7f7ae6ec5000-7f7ae6ec7000 r--s 0000d000 08:0a 2762907                    /home/proxima/.gradle/caches/transforms-1/files-1.1/truesdk-0.7-releasePartner.aar/eaa44aaee0fecd949e016f9fb4c7300a/jars/classes.jar
+7f7ae6ec7000-7f7ae6eca000 r--s 00011000 08:0a 6191877                    /home/proxima/.gradle/caches/transforms-1/files-1.1/android-gif-drawable-1.2.12.aar/74f23f4ae4c9ecce83fe1ecbb09ecfb3/jars/classes.jar
+7f7ae6eca000-7f7ae6ecb000 r--s 00000000 08:0a 4878444                    /home/proxima/.gradle/caches/transforms-1/files-1.1/sdp-android-1.0.5.aar/bb89798d0615b9b2e5a2ba1f561f1df8/jars/classes.jar
+7f7ae6ecb000-7f7ae6ecc000 r--s 00004000 08:0a 4082132                    /home/proxima/.gradle/caches/transforms-1/files-1.1/badgeview-1.1.2.aar/3a44bfb72d2b66496c2fd0958a8f57c3/jars/classes.jar
+7f7ae6ecc000-7f7ae6ee4000 r--s 0020d000 08:0a 3565330                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.itextpdf/itextg/5.5.9/3580383b2c7db8fa2fee1ffbe1993017a9ea296e/itextg-5.5.9.jar
+7f7ae6ee4000-7f7ae6ef5000 r--s 0008a000 08:0a 3565329                    /home/proxima/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.9.9/f7b520c458572890807d143670c9b24f4de90897/joda-time-2.9.9.jar
+7f7ae6ef5000-7f7ae6ef6000 r--s 00001000 08:0a 3565328                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.jakewharton.timber/timber/3.1.0/3ab2aedaeb4bfa698d0021cb843b2040fbf57fc/timber-3.1.0.jar
+7f7ae6ef6000-7f7ae6f27000 r--s 00206000 08:0a 3565306                    /home/proxima/.gradle/caches/modules-2/files-2.1/io.reactivex.rxjava2/rxjava/2.2.1/bf6d5185963ea3ed40d44f56a2130c7a5e918f3c/rxjava-2.2.1.jar
+7f7ae6f27000-7f7ae6f28000 r--s 00002000 08:0a 6457429                    /home/proxima/.gradle/caches/transforms-1/files-1.1/rxandroid-2.1.0.aar/10d58f5c5e3befeabdd18dbb5d243739/jars/classes.jar
+7f7ae6f28000-7f7ae6f2c000 r--s 00037000 08:0a 2762931                    /home/proxima/.gradle/caches/transforms-1/files-1.1/checkout-1.5.4.aar/30985f61d4974076005b53adee7de036/jars/classes.jar
+7f7ae6f2c000-7f7ae6f38000 r--s 00069000 08:0a 3551563                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.7.0/9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4/glide-3.7.0.jar
+7f7ae6f38000-7f7ae6f48000 r--s 00078000 08:0a 2762892                    /home/proxima/.gradle/caches/transforms-1/files-1.1/stetho-1.5.0.aar/a3ab03665ca85f975f91572eb84867fc/jars/classes.jar
+7f7ae6f48000-7f7ae6f4d000 r--s 00060000 08:0a 3552717                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.10.0/7ef0f1d95bf4c0b3ba30bbae25e0e562b05cf75e/okhttp-3.10.0.jar
+7f7ae6f4d000-7f7ae6f4f000 r--s 00010000 08:0a 3565327                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.amplitude/android-sdk/2.18.1/5a85cf3f281e8e0a3220f88e3212db3e2038f06a/android-sdk-2.18.1.jar
+7f7ae6f4f000-7f7ae6f51000 r--s 00001000 08:0a 3565326                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/logging-interceptor/3.9.0/3bf7f8d6a20c90ffe9fc3f3c9118193c7720ecf1/logging-interceptor-3.9.0.jar
+7f7ae6f51000-7f7ae6f52000 r--s 00001000 08:0a 1989074                    /home/proxima/.gradle/caches/transforms-1/files-1.1/stetho-okhttp3-1.5.0.aar/353630f3a3e065d00aba73f29cd3a3b6/jars/classes.jar
+7f7ae6f52000-7f7ae6f55000 r--s 00014000 08:0a 3565325                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.4.0/fc4aa382632bfaa7be7b41579efba41d5a71ecf3/retrofit-2.4.0.jar
+7f7ae6f55000-7f7ae6f56000 r--s 00003000 08:0a 3565320                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/adapter-rxjava2/2.4.0/9286ea8ac29dc3822cca03291259db825e118506/adapter-rxjava2-2.4.0.jar
+7f7ae6f56000-7f7ae6f5a000 r--s 0002a000 08:0a 3547920                    /home/proxima/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.4/b1b6ea3b7e4aa4f492509a4952029cd8e48019ad/commons-io-2.4.jar
+7f7ae6f5a000-7f7ae6f60000 r--s 0005b000 08:0a 3565324                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.11.3/36da09a8f68484523fa2aaa100399d612b247d67/jsoup-1.11.3.jar
+7f7ae6f60000-7f7ae6f61000 r--s 00001000 08:0a 3565323                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.0.2/f8d87f15b94b8d74e7ccf61d7eedb558811cdb30/converter-gson-2.0.2.jar
+7f7ae6f61000-7f7ae6f63000 r--s 0000e000 08:0a 4610411                    /home/proxima/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/8e214ed2a00cbfbb85b7a2320eeb9eae/jars/classes.jar
+7f7ae6f63000-7f7ae6f65000 r--s 00005000 08:0a 3548198                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/28.0.0/ed73f5337a002d1fd24339d5fb08c2c9d9ca60d8/support-annotations-28.0.0.jar
+7f7ae6f65000-7f7ae6f66000 r--s 00002000 08:0a 3548197                    /home/proxima/.gradle/caches/modules-2/files-2.1/android.arch.core/common/1.1.1/e55b70d1f5620db124b3e85a7f4bdc7bd48d9f95/common-1.1.1.jar
+7f7ae6f66000-7f7ae6f67000 r--s 00002000 08:0a 6457425                    /home/proxima/.gradle/caches/transforms-1/files-1.1/db-1.1.0.aar/388cb78dac2ad59c026f6e6c34a25c66/jars/classes.jar
+7f7ae6f67000-7f7ae6f68000 r--s 00002000 08:0a 2249517                    /home/proxima/.gradle/caches/transforms-1/files-1.1/db-framework-1.1.0.aar/579309b8b530875970cdde42bd6d26f8/jars/classes.jar
+7f7ae6f68000-7f7ae6f6a000 r--s 00000000 08:0a 5138991                    /home/proxima/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/aa10fd2a589457987fcbc27e4279c09f/jars/classes.jar
+7f7ae6f6a000-7f7ae6f6b000 r--s 00001000 08:0a 4221144                    /home/proxima/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/0fbc965fa17acb48c7d07b9d8aa0e4e9/jars/classes.jar
+7f7ae6f6b000-7f7ae6f6d000 r--s 00004000 08:0a 3551562                    /home/proxima/.gradle/caches/modules-2/files-2.1/android.arch.lifecycle/common/1.1.0/edf3f7bfb84a7521d0599efa3b0113a0ee90f85/common-1.1.0.jar
+7f7ae6f6d000-7f7ae6f6e000 r--s 00002000 08:0a 2762888                    /home/proxima/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/d4cd6750c442bfc77ae26ead8a8b1234/jars/classes.jar
+7f7ae6f6e000-7f7ae6f6f000 r--s 00002000 08:0a 2762881                    /home/proxima/.gradle/caches/transforms-1/files-1.1/livedata-1.1.0.aar/8fe3c43cbc1302ebc181a36edbe1593e/jars/classes.jar
+7f7ae6f6f000-7f7ae6f70000 r--s 00002000 08:0a 2762885                    /home/proxima/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/cecc1fe8cedbcdd7b292ad7548fd7457/jars/classes.jar
+7f7ae6f70000-7f7ae6f7c000 r--s 00080000 08:0a 2762878                    /home/proxima/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/9f18e17189b5565a297cd3c8703ee543/jars/classes.jar
+7f7ae6f7c000-7f7ae6f81000 r--s 0002c000 08:0a 2249515                    /home/proxima/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/2941a675bdbcfc33e7f82dd753d6523c/jars/classes.jar
+7f7ae6f81000-7f7ae6f82000 r--s 00007000 08:0a 2762784                    /home/proxima/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/0aa3321e3f3114c401f4af6a18129cc6/jars/classes.jar
+7f7ae6f82000-7f7ae6f85000 r--s 00017000 08:0a 2762779                    /home/proxima/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/43da7b1af92a7f6b77e8285e6a3ee203/jars/classes.jar
+7f7ae6f85000-7f7ae6f86000 r--s 00005000 08:0a 4610399                    /home/proxima/.gradle/caches/transforms-1/files-1.1/palette-v7-27.1.1.aar/bd776b1cb40f815d0e7848838aeaa1a0/jars/classes.jar
+7f7ae6f86000-7f7ae6f8e000 r--s 00057000 08:0a 2762782                    /home/proxima/.gradle/caches/transforms-1/files-1.1/facebook-core-4.35.0.aar/5f41bea7a34278ac96992805afd3938c/jars/classes.jar
+7f7ae6f8e000-7f7ae6f90000 r--s 00005000 08:0a 2762773                    /home/proxima/.gradle/caches/transforms-1/files-1.1/facebook-marketing-4.35.0.aar/94a7ea72f7010a774b1e2dc5dc52a1ac/jars/classes.jar
+7f7ae6f90000-7f7ae6f91000 r--s 00002000 08:0a 5138985                    /home/proxima/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.35.0.aar/a9643a4db05a18abe63eba353e9b02b3/jars/classes.jar
+7f7ae6f91000-7f7ae6f92000 r--s 00003000 08:0a 2762775                    /home/proxima/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.35.0.aar/8b28d95688022a8550a3c66ff824c42d/jars/classes.jar
+7f7ae6f92000-7f7ae6f94000 r--s 0000d000 08:0a 2511260                    /home/proxima/.gradle/caches/transforms-1/files-1.1/facebook-places-4.35.0.aar/51350a7edbac03099b80c770189cb41b/jars/classes.jar
+7f7ae6f94000-7f7ae6f98000 r--s 00043000 08:0a 5396762                    /home/proxima/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/14f54456b1f06a86eda4cc8e57c6db43/jars/classes.jar
+7f7ae6f98000-7f7ae6f99000 r--s 00008000 08:0a 3958594                    /home/proxima/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/da103880c91cf1a80c3b256d6d08a68a/jars/classes.jar
+7f7ae6f99000-7f7ae6f9d000 r--s 00029000 08:0a 2762761                    /home/proxima/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/620606e2e9557a97d01344cb10d4e75f/jars/classes.jar
+7f7ae6f9d000-7f7ae6f9f000 r--s 0000c000 08:0a 2762763                    /home/proxima/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/a833837fefb4aeed38ef17734e95a931/jars/classes.jar
+7f7ae6f9f000-7f7ae6fa7000 r--s 0004c000 08:0a 13947                      /home/proxima/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/f0fcb8809c5d8facd48ce3f731d31187/jars/classes.jar
+7f7ae6fa7000-7f7ae6fa8000 r--s 00000000 08:0a 2762758                    /home/proxima/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/19894c14c5a7a590bb86cf4d0f299421/jars/classes.jar
+7f7ae6fa8000-7f7ae6fb3000 r--s 0005c000 08:0a 2762703                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-basement-12.0.0.aar/7ca6f89dcfe4efcd73d2808a0849322e/jars/classes.jar
+7f7ae6fb3000-7f7ae6fb6000 r--s 0000c000 08:0a 2762700                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-tasks-12.0.0.aar/286757fd13042bd9635e0d942235aadf/jars/classes.jar
+7f7ae6fb6000-7f7ae6fb8000 r--s 00004000 08:0a 2762698                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-gass-12.0.0.aar/5254163281c436b14dcdbe117e80a2e4/jars/classes.jar
+7f7ae6fb8000-7f7ae6fb9000 r--s 00001000 08:0a 2762696                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-storage-common-12.0.0.aar/9f1c7526a190035974e2423fc3ff901c/jars/classes.jar
+7f7ae6fb9000-7f7ae6fc3000 r--s 00053000 08:0a 2762592                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-base-12.0.0.aar/383b786205d31b9381814d818bc71f88/jars/classes.jar
+7f7ae6fc3000-7f7ae6fcc000 r--s 0003d000 08:0a 4743867                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-wearable-12.0.0.aar/7db679795c8b4f7d00f17e2c3bd55a9d/jars/classes.jar
+7f7ae6fcc000-7f7ae6fce000 r--s 00007000 08:0a 5396747                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-vision-common-12.0.0.aar/8f2cc952afa134c03d7a28a6546561a2/jars/classes.jar
+7f7ae6fce000-7f7ae6fd1000 r--s 00011000 08:0a 4743873                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-vision-12.0.0.aar/7bdb8f0b8f66ef10d573254bde67641e/jars/classes.jar
+7f7ae6fd1000-7f7ae6fd4000 r--s 0000a000 08:0a 2762587                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-safetynet-12.0.0.aar/422a191174398a1ec5df0745ad875893/jars/classes.jar
+7f7ae6fd4000-7f7ae6fd7000 r--s 00015000 08:0a 6191851                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-plus-12.0.0.aar/a3343f55048a4d8847bd87e6a288a640/jars/classes.jar
+7f7ae6fd7000-7f7ae6fd9000 r--s 00002000 08:0a 2762589                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-panorama-12.0.0.aar/1096a60d19fafa23e115736f6a61d4dc/jars/classes.jar
+7f7ae6fd9000-7f7ae6fe2000 r--s 00040000 08:0a 4082111                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-nearby-12.0.0.aar/5bbb2797ffa17f00ecc452a54b9123e3/jars/classes.jar
+7f7ae6fe2000-7f7ae6fea000 r--s 00037000 08:0a 6053245                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-maps-12.0.0.aar/67cbc0a15e8dd9d5ad66790e7db83dee/jars/classes.jar
+7f7ae6fea000-7f7ae6fee000 r--s 0001b000 08:0a 2511243                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-places-12.0.0.aar/75c6ef68ff1fa1cbe68205ba52ee7fa0/jars/classes.jar
+7f7ae6fee000-7f7ae6ff3000 r--s 0001c000 08:0a 6580979                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-location-12.0.0.aar/26ef4ce7862f9b6b9dfd8f0403b8d81a/jars/classes.jar
+7f7ae6ff3000-7f7ae6ff5000 r--s 0000c000 08:0a 2762533                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-instantapps-12.0.0.aar/54878684ba3956390882199cbb3e1c14/jars/classes.jar
+7f7ae6ff5000-7f7ae6ff7000 r--s 00008000 08:0a 2762523                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-iid-12.0.0.aar/861560b897d272c2852a33251c8375e0/jars/classes.jar
+7f7ae6ff7000-7f7ae6ff9000 r--s 00004000 08:0a 4743857                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-identity-12.0.0.aar/90e4d1c51fc3872a44288de0592b6933/jars/classes.jar
+7f7ae6ff9000-7f7ae7000000 r--s 0002a000 08:0a 2762524                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-wallet-12.0.0.aar/abe8f862a82fe0c38f4df74f417df69d/jars/classes.jar
+7f7ae7000000-7f7ae7200000 rw-p 00000000 00:00 0 
+7f7ae7200000-7f7ae7400000 rw-p 00000000 00:00 0 
+7f7ae7400000-7f7ae7600000 rw-p 00000000 00:00 0 
+7f7ae7600000-7f7ae7800000 rw-p 00000000 00:00 0 
+7f7ae7800000-7f7ae7a00000 rw-p 00000000 00:00 0 
+7f7ae7a00000-7f7ae7c00000 rw-p 00000000 00:00 0 
+7f7ae7c00000-7f7ae7e00000 rw-p 00000000 00:00 0 
+7f7ae7e00000-7f7ae8000000 rw-p 00000000 00:00 0 
+7f7ae8000000-7f7ae8021000 rw-p 00000000 00:00 0 
+7f7ae8021000-7f7aec000000 ---p 00000000 00:00 0 
+7f7aec000000-7f7aec002000 r--s 00009000 08:0a 5656827                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-gcm-12.0.0.aar/711308f668b9cfd647ba475c9e1f7f0e/jars/classes.jar
+7f7aec002000-7f7aec00c000 r--s 00054000 08:0a 5534739                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-fitness-12.0.0.aar/066f45b2c3ceb438c1796c045e73ada8/jars/classes.jar
+7f7aec00c000-7f7aec011000 r--s 00020000 08:0a 5269111                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-fido-12.0.0.aar/f8b39abb7aea8e435fa9c59903cad96c/jars/classes.jar
+7f7aec011000-7f7aec01c000 r--s 00051000 08:0a 4610389                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-drive-12.0.0.aar/9e9d0c69560e15158337cbfbad08ffc4/jars/classes.jar
+7f7aec01c000-7f7aec02d000 r--s 00074000 08:0a 2762519                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-games-12.0.0.aar/aabcd282281a0f48c39eb09cd141743f/jars/classes.jar
+7f7aec02d000-7f7aec033000 r--s 00026000 08:0a 2762517                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-awareness-12.0.0.aar/eebd044a6d7c7c3e82193925dac12492/jars/classes.jar
+7f7aec033000-7f7aec037000 r--s 00016000 08:0a 4082100                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-12.0.0.aar/dd4e3835e61bb0ef4dbcfcfbe68e1a94/jars/classes.jar
+7f7aec037000-7f7aec039000 r--s 00001000 08:0a 6053234                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-12.0.0.aar/eb90db2aa18d9500f51a2ac3193466c6/jars/classes.jar
+7f7aec039000-7f7aec03f000 r--s 0002c000 08:0a 4610387                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-tagmanager-v4-impl-12.0.0.aar/b25b77b72e177a91f0dbb14965c8f575/jars/classes.jar
+7f7aec03f000-7f7aec160000 r--s 02b7d000 08:0a 3546387                    /home/proxima/Android/Sdk/platforms/android-28/android.jar
+7f7aec160000-7f7aec360000 rw-p 00000000 00:00 0 
+7f7aec360000-7f7aec560000 rw-p 00000000 00:00 0 
+7f7aec560000-7f7aec760000 rw-p 00000000 00:00 0 
+7f7aec760000-7f7aec960000 rw-p 00000000 00:00 0 
+7f7aec960000-7f7aec964000 r--s 00028000 08:0a 4480983                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-analytics-impl-12.0.0.aar/b8d1c291ef1bc95fa7ebe8ea704e07df/jars/classes.jar
+7f7aec964000-7f7aec965000 r--s 00000000 08:0a 2140916                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-analytics-12.0.0.aar/6e98e0a46d4400732e191fdfc3087ac5/jars/classes.jar
+7f7aec965000-7f7aec970000 r--s 00058000 08:0a 2511236                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-12.0.0.aar/d2ca04d6ba026af489eaa345b6940f78/jars/classes.jar
+7f7aec970000-7f7aec98a000 r--s 00115000 08:0a 2762459                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-ads-12.0.0.aar/e1f02e39719a7cf9f9588748ad77ad7d/jars/classes.jar
+7f7aec98a000-7f7aec98c000 r--s 00009000 08:0a 6457408                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-common-12.0.0.aar/0e1125d8db4fe675720085b787f14880/jars/classes.jar
+7f7aec98c000-7f7aec990000 r--s 0001d000 08:0a 6457410                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-appindexing-12.0.0.aar/854bcb31757e20dfc50c3d35ac7e5db2/jars/classes.jar
+7f7aec990000-7f7aec993000 r--s 00011000 08:0a 5138963                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-storage-12.0.0.aar/2ff7d3af56629afaace3983934f0eac3/jars/classes.jar
+7f7aec993000-7f7aec995000 r--s 00007000 08:0a 2249480                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-dynamic-links-12.0.0.aar/50a2423fdfbe9725e609804b1711a0e4/jars/classes.jar
+7f7aec995000-7f7aec997000 r--s 00007000 08:0a 6191846                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-appinvite-12.0.0.aar/a48382d0ba9bfe02e4b1c5dbf30a6039/jars/classes.jar
+7f7aec997000-7f7aec99b000 r--s 00016000 08:0a 5656826                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-database-connection-12.0.0.aar/6a86c6e76a75f83af4b6d4cb3ccd1ca7/jars/classes.jar
+7f7aec99b000-7f7aec9a2000 r--s 00039000 08:0a 5656824                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-database-12.0.0.aar/3325f63c9ab48db6edd6b115d595d6bb/jars/classes.jar
+7f7aec9a2000-7f7aec9a7000 r--s 00026000 08:0a 6053227                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-auth-12.0.0.aar/4a8b677d9568a92ac88a4908bae2f8fc/jars/classes.jar
+7f7aec9a7000-7f7aec9a9000 r--s 0000a000 08:0a 5534734                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-iid-12.0.0.aar/55404fc703664e12491b62dd4d9e7d8a/jars/classes.jar
+7f7aec9a9000-7f7aec9ae000 r--s 0003d000 08:0a 5534736                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-12.0.0.aar/1c59d7ecb298f618ecc4877eebbeec2c/jars/classes.jar
+7f7aec9ae000-7f7aec9af000 r--s 00001000 08:0a 5396746                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-analytics-12.0.0.aar/3e2cbdab93e561171a409b2f945bff07/jars/classes.jar
+7f7aec9af000-7f7aec9b1000 r--s 00005000 08:0a 5269104                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-tagmanager-api-12.0.0.aar/e4f43b485563ff5cdd53da5f4d64f58f/jars/classes.jar
+7f7aec9b1000-7f7aec9b9000 r--s 00039000 08:0a 5396745                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-tagmanager-12.0.0.aar/f9933766d1b1ac8259e885ca50f8972a/jars/classes.jar
+7f7aec9b9000-7f7aec9ba000 r--s 00000000 08:0a 5269109                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-invites-12.0.0.aar/d7f3c59b9641c2ccb450f4d7c8fd3fc1/jars/classes.jar
+7f7aec9ba000-7f7aec9bb000 r--s 00000000 08:0a 4878412                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-core-12.0.0.aar/7920cd07289af0dfd467881c4d8fd76c/jars/classes.jar
+7f7aec9bb000-7f7aec9bd000 r--s 00005000 08:0a 5269105                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-crash-12.0.0.aar/0dbf7145b5e10fdb175a98a24d41a2eb/jars/classes.jar
+7f7aec9bd000-7f7aec9c1000 r--s 00013000 08:0a 6580968                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-auth-12.0.0.aar/c89430886fbb0f961e4df17fd16ebd65/jars/classes.jar
+7f7aec9c1000-7f7aec9c4000 r--s 0000d000 08:0a 5138956                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-config-12.0.0.aar/b2f4438620eafbabbff56845075b9910/jars/classes.jar
+7f7aec9c4000-7f7aec9c5000 r--s 00006000 08:0a 1989000                    /home/proxima/.gradle/caches/transforms-1/files-1.1/firebase-messaging-12.0.0.aar/1f097f84bff0a8f1681d6ba9d495d605/jars/classes.jar
+7f7aec9c5000-7f7aec9c6000 r--s 00005000 08:0a 4878398                    /home/proxima/.gradle/caches/transforms-1/files-1.1/extensions-1.1.0.aar/74687d8201c772c82b870dccc9647a8d/jars/classes.jar
+7f7aec9c6000-7f7aec9cd000 r--s 0002c000 08:0a 4878406                    /home/proxima/.gradle/caches/transforms-1/files-1.1/rxbinding-2.1.1.aar/4c11f1f1b0947fa6d0d89019b686f42a/jars/classes.jar
+7f7aec9cd000-7f7aec9d2000 r--s 00048000 08:0a 2762457                    /home/proxima/.gradle/caches/transforms-1/files-1.1/library-3.1.2.aar/4b48533c946e84f8a8d8b2f3d7275fea/jars/classes.jar
+7f7aec9d2000-7f7aec9d5000 r--s 0000e000 08:0a 1723891                    /home/proxima/.gradle/caches/transforms-1/files-1.1/customtabs-27.1.1.aar/9f31ea688418bd5d2c5ed07adfed46f4/jars/classes.jar
+7f7aec9d5000-7f7aec9d7000 r--s 00004000 08:0a 1723885                    /home/proxima/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.1.1.aar/d28b0ca94e2d2ca2374d6dbb74cc451d/jars/classes.jar
+7f7aec9d7000-7f7aec9dd000 r--s 00058000 08:0a 1723880                    /home/proxima/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/b8f097f1bcdb792ed17655497828a988/jars/classes.jar
+7f7aec9dd000-7f7aec9e8000 r--s 000a0000 08:0a 5138943                    /home/proxima/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/4ef51d50d9fcb457854fa7ae1f67825c/jars/classes.jar
+7f7aec9e8000-7f7aec9ea000 r--s 00008000 08:0a 2249460                    /home/proxima/.gradle/caches/transforms-1/files-1.1/library-1.1.4.aar/dc7333484122626e6c6b1d655b2806f6/jars/classes.jar
+7f7aec9ea000-7f7aec9f3000 r--s 00061000 08:0a 2762448                    /home/proxima/.gradle/caches/transforms-1/files-1.1/facebook-common-4.35.0.aar/c2da285a1624769e1d14a5e5bdaa3212/jars/classes.jar
+7f7aec9f3000-7f7aec9f7000 r--s 00016000 08:0a 2762408                    /home/proxima/.gradle/caches/transforms-1/files-1.1/facebook-share-4.35.0.aar/cce4f19e497286f3b88bcb95cdb52ce2/jars/classes.jar
+7f7aec9f7000-7f7aec9f9000 r--s 00007000 08:0a 2762372                    /home/proxima/.gradle/caches/transforms-1/files-1.1/facebook-login-4.35.0.aar/b9db0e02db3363df4e3be782a2ccdefa/jars/classes.jar
+7f7aec9f9000-7f7aec9fa000 r--s 00000000 08:0a 4480958                    /home/proxima/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.35.0.aar/7ae993e104561878d16103f95c208cca/jars/classes.jar
+7f7aec9fa000-7f7aec9fc000 r--s 00013000 08:0a 5534731                    /home/proxima/.gradle/caches/transforms-1/files-1.1/core-0.8.5.4.aar/9bd6a72fea34740a629f040509b97516/jars/classes.jar
+7f7aec9fc000-7f7aeca02000 r--s 00043000 08:0a 1723497                    /home/proxima/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/f6a1c44b239e9c963e3a5bd17d577dc4/jars/classes.jar
+7f7aeca02000-7f7aeca12000 r--s 000a5000 08:0a 6319500                    /home/proxima/.gradle/caches/transforms-1/files-1.1/instabug-core-8.0.9.aar/0448bdf7439d37228f4a13df67bdd834/jars/classes.jar
+7f7aeca12000-7f7aeca17000 r--s 0002c000 08:0a 5656755                    /home/proxima/.gradle/caches/transforms-1/files-1.1/instabug-features-request-8.0.9.aar/62ff713256f1bcc4f258e4e6e632eafe/jars/classes.jar
+7f7aeca17000-7f7aeca1b000 r--s 00028000 08:0a 5396719                    /home/proxima/.gradle/caches/transforms-1/files-1.1/instabug-chat-8.0.9.aar/c2e45e7fa7eef166f5771754de9edacd/jars/classes.jar
+7f7aeca1b000-7f7aeca1f000 r--s 0002d000 08:0a 6457358                    /home/proxima/.gradle/caches/transforms-1/files-1.1/instabug-bug-8.0.9.aar/011e9ab67dcae8a92934a6a6209709f2/jars/classes.jar
+7f7aeca1f000-7f7aeca23000 r--s 00020000 08:0a 6053198                    /home/proxima/.gradle/caches/transforms-1/files-1.1/instabug-survey-8.0.9.aar/0ab3de496239e997330a089e4b6b12e7/jars/classes.jar
+7f7aeca23000-7f7aeca28000 r--s 00037000 08:0a 6580942                    /home/proxima/.gradle/caches/transforms-1/files-1.1/mediarouter-v7-27.1.1.aar/d6f2b232af201105d5bf9fb69aeccb38/jars/classes.jar
+7f7aeca28000-7f7aeca33000 r--s 0006b000 08:0a 4743116                    /home/proxima/.gradle/caches/transforms-1/files-1.1/freshchat-android-1.3.3.aar/ab4f3052af52aae63838f08abc27286a/jars/libs/freshchat.jar
+7f7aeca33000-7f7aeca71000 r--s 002f3000 08:0a 3565570                    /home/proxima/.gradle/caches/modules-2/files-2.1/me.eugeniomarletti.kotlin.metadata/kotlin-compiler-lite/1.0.3-k-1.2.40/a16e967c276379eaf6e1fa03af77664f003db947/kotlin-compiler-lite-1.0.3-k-1.2.40.jar
+7f7aeca71000-7f7aecc71000 rw-p 00000000 00:00 0 
+7f7aecc71000-7f7aece71000 rw-p 00000000 00:00 0 
+7f7aece71000-7f7aecf56000 r-xp 00000000 08:0a 3548115                    /tmp/room-9ea252f7-b43b-42ee-8b6a-0ad03ce672b8/sqlite-3.20.1-eec4f68b-7c54-412c-9727-5c26bef370e3-libsqlitejdbc.so
+7f7aecf56000-7f7aed155000 ---p 000e5000 08:0a 3548115                    /tmp/room-9ea252f7-b43b-42ee-8b6a-0ad03ce672b8/sqlite-3.20.1-eec4f68b-7c54-412c-9727-5c26bef370e3-libsqlitejdbc.so
+7f7aed155000-7f7aed15a000 rw-p 000e4000 08:0a 3548115                    /tmp/room-9ea252f7-b43b-42ee-8b6a-0ad03ce672b8/sqlite-3.20.1-eec4f68b-7c54-412c-9727-5c26bef370e3-libsqlitejdbc.so
+7f7aed15a000-7f7aed35b000 rw-p 00000000 00:00 0 
+7f7aed35b000-7f7aed55b000 rw-p 00000000 00:00 0 
+7f7aed55b000-7f7aed75b000 rw-p 00000000 00:00 0 
+7f7aed75b000-7f7aed95b000 rw-p 00000000 00:00 0 
+7f7aed95b000-7f7aedb5b000 rw-p 00000000 00:00 0 
+7f7aedb5b000-7f7aedd5b000 rw-p 00000000 00:00 0 
+7f7aedd5b000-7f7aedf5b000 rw-p 00000000 00:00 0 
+7f7aedf5b000-7f7aedf5c000 r--s 00003000 08:0a 5534683                    /home/proxima/.gradle/caches/transforms-1/files-1.1/StepView-1.9.aar/9b922760bd57f2cada39d6bc29a13c6b/jars/classes.jar
+7f7aedf5c000-7f7aedf5e000 r--s 00008000 08:0a 5396741                    /home/proxima/.gradle/caches/transforms-1/files-1.1/instabug-crash-8.0.9.aar/b77eaec2ce005334bf18567c70cb8543/jars/classes.jar
+7f7aedf5e000-7f7aedf65000 r--s 00037000 08:0a 1722734                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-cast-framework-12.0.0.aar/b007179acb67ba55ca664c13f95ddcae/jars/classes.jar
+7f7aedf65000-7f7aedf90000 r--s 0028a000 08:0a 3565573                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.google.errorprone/javac-shaded/9-dev-r4023-3/72b688efd290280a0afde5f9892b0fde6f362d1d/javac-shaded-9-dev-r4023-3.jar
+7f7aedf90000-7f7aedf93000 ---p 00000000 00:00 0 
+7f7aedf93000-7f7aee291000 rw-p 00000000 00:00 0 
+7f7aee291000-7f7aee297000 r--s 00034000 08:0a 1722838                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-cast-12.0.0.aar/46ee14f1ac58c820ecaa2edddc4ef9fd/jars/classes.jar
+7f7aee297000-7f7aee298000 r--s 00000000 08:0a 4743115                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-12.0.0.aar/b11de1e69bf7075281ff7ee114e04137/jars/classes.jar
+7f7aee298000-7f7aee299000 r--s 0000b000 08:0a 6580937                    /home/proxima/.gradle/caches/transforms-1/files-1.1/exifinterface-27.1.1.aar/5c3f20f57d33c13c69a552cae68fdd14/jars/classes.jar
+7f7aee299000-7f7aee29a000 r--s 00001000 08:0a 2511274                    /home/proxima/.gradle/caches/transforms-1/files-1.1/crashlytics-2.8.0.aar/4bab1b00beab220add12afed0465099c/jars/classes.jar
+7f7aee29a000-7f7aee29b000 r--s 00000000 08:0a 4743113                    /home/proxima/.gradle/caches/transforms-1/files-1.1/freshchat-android-1.3.3.aar/ab4f3052af52aae63838f08abc27286a/jars/classes.jar
+7f7aee29b000-7f7aee29d000 r--s 00009000 08:0a 3565322                    /home/proxima/.gradle/caches/modules-2/files-2.1/de.greenrobot/eventbus/2.2.0/8957e80562a7e6ac5d9421e46e0898336c06c307/eventbus-2.2.0.jar
+7f7aee29d000-7f7aee2a1000 r--s 00024000 08:0a 1723439                    /home/proxima/.gradle/caches/transforms-1/files-1.1/android-priority-jobqueue-2.0.1.aar/6fb253bc8d93752823acfce3dd9eb3af/jars/classes.jar
+7f7aee2a1000-7f7aee2a3000 r--s 00004000 08:0a 3565393                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.glassfish/javax.annotation/10.0-b28/30eb3b3cc9cb0863a4edaea5a7575f8ace1b96ba/javax.annotation-10.0-b28.jar
+7f7aee2a3000-7f7aee2a4000 r--s 00005000 08:0a 4480952                    /home/proxima/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/1926547815a3b0946846c74f6d3d5791/jars/classes.jar
+7f7aee2a4000-7f7aee2a5000 r--s 00005000 08:0a 1713103                    /home/proxima/Downloads/android-app-new/app/libs/opencsv-2.1-1.0.0.jar
+7f7aee2a5000-7f7aee2aa000 r--s 00034000 08:0a 3547915                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.0/c4ba5371a29ac9b2ad6129b1d39ea38750043eff/gson-2.8.0.jar
+7f7aee2aa000-7f7aee2ad000 r--s 00004000 08:0a 3554123                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/26.1.0/814258103cf26a15fcc26ecce35f5b7d24b73f8/support-annotations-26.1.0.jar
+7f7aee2ad000-7f7aee2ae000 r--s 00000000 08:0a 3547942                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.codehaus.mojo/animal-sniffer-annotations/1.14/775b7e22fb10026eed3f86e8dc556dfafe35f2d5/animal-sniffer-annotations-1.14.jar
+7f7aee2ae000-7f7aee2b0000 r--s 00001000 08:0a 3565574                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.1/ed28ded51a8b1c6b112568def5f4b455e6809019/j2objc-annotations-1.1.jar
+7f7aee2b0000-7f7aee2b1000 r--s 00002000 08:0a 3548208                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.0.18/5f65affce1684999e2f4024983835efc3504012e/error_prone_annotations-2.0.18.jar
+7f7aee2b1000-7f7aee2b4000 ---p 00000000 00:00 0 
+7f7aee2b4000-7f7aee5b2000 rw-p 00000000 00:00 0 
+7f7aee5b2000-7f7aee7b2000 rw-p 00000000 00:00 0 
+7f7aee7b2000-7f7aee9b2000 rw-p 00000000 00:00 0 
+7f7aee9b2000-7f7aeebb2000 rw-p 00000000 00:00 0 
+7f7aeebb2000-7f7aeedb2000 rw-p 00000000 00:00 0 
+7f7aeedb2000-7f7aeefb2000 rw-p 00000000 00:00 0 
+7f7aeefb2000-7f7aef1b2000 rw-p 00000000 00:00 0 
+7f7aef1b2000-7f7aef1b5000 r--s 00006000 08:0a 3548206                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/1.3.9/40719ea6961c0cb6afaeb6a921eaa1f6afd4cfdf/jsr305-1.3.9.jar
+7f7aef1b5000-7f7aef1b6000 r--s 00001000 08:0a 3565572                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-compat-qual/2.3.0/69cb4fea55a9d89b8827d107f17c985cc1a76052/checker-compat-qual-2.3.0.jar
+7f7aef1b6000-7f7aef1cd000 r--s 00154000 08:0a 3547921                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.antlr/antlr4/4.5.3/f35db7e4b2446e4174ba6a73db7bd6b3e6bb5da1/antlr4-4.5.3.jar
+7f7aef1cd000-7f7aef1fe000 r--s 00258000 08:0a 3565565                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/23.3-jre/9124c2675a9de3ba953f66d62339cf62f8e1a143/guava-23.3-jre.jar
+7f7aef1fe000-7f7aef201000 ---p 00000000 00:00 0 
+7f7aef201000-7f7aef2ff000 rw-p 00000000 00:00 0 
+7f7aef2ff000-7f7aef302000 ---p 00000000 00:00 0 
+7f7aef302000-7f7aef600000 rw-p 00000000 00:00 0 
+7f7aef600000-7f7aef800000 rw-p 00000000 00:00 0 
+7f7aef800000-7f7aefa00000 rw-p 00000000 00:00 0 
+7f7aefa00000-7f7aefc00000 rw-p 00000000 00:00 0 
+7f7aefc00000-7f7aefe00000 rw-p 00000000 00:00 0 
+7f7aefe00000-7f7af0000000 rw-p 00000000 00:00 0 
+7f7af0000000-7f7af0021000 rw-p 00000000 00:00 0 
+7f7af0021000-7f7af4000000 ---p 00000000 00:00 0 
+7f7af4000000-7f7af4002000 r--s 00002000 08:0a 3565514                    /home/proxima/.gradle/caches/modules-2/files-2.1/android.arch.persistence.room/common/1.1.0/6e749dde07b1f6fe13444c94befde3c28e700d5b/common-1.1.0.jar
+7f7af4002000-7f7af4009000 r--s 0003f000 08:0a 3564859                    /home/proxima/.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.10/4b95f4897fa13f2cd904aee711aeafc0c5295cd8/commons-codec-1.10.jar
+7f7af4009000-7f7af400d000 r--s 00651000 08:0a 3565571                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.xerial/sqlite-jdbc/3.20.1/df3068e837e9490a9554212fcab40a2c55faf0a3/sqlite-jdbc-3.20.1.jar
+7f7af400d000-7f7af401c000 r--s 000d7000 08:0a 3552375                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.2.41/7e34f009642702250bccd9e5255866f408962a05/kotlin-stdlib-1.2.41.jar
+7f7af401c000-7f7af401f000 r--s 0000c000 08:0a 3565568                    /home/proxima/.gradle/caches/modules-2/files-2.1/me.eugeniomarletti.kotlin.metadata/kotlin-metadata/1.4.0/f90c95f5fc4db865dfb0499671a81e02e2080032/kotlin-metadata-1.4.0.jar
+7f7af401f000-7f7af4021000 r--s 00015000 08:0a 3547922                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.squareup/javapoet/1.8.0/e858dc62ef484048540d27d36f3ec2177a3fa9b1/javapoet-1.8.0.jar
+7f7af4021000-7f7af4024000 r--s 0000f000 08:0a 3565566                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.google.auto/auto-common/0.6/cf7212b0f8bfef12657b942df8f4f2cf032d3f41/auto-common-0.6.jar
+7f7af4024000-7f7af4028000 r--s 00033000 08:0a 3565575                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.google.googlejavaformat/google-java-format/1.4/c2f8925850e17caa6da0ed1891a9e9de9414c062/google-java-format-1.4.jar
+7f7af4028000-7f7af402a000 r--s 00008000 08:0a 3565331                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger/2.15/13cc1f509deda05c1fe5a315519d7cb743b8333b/dagger-2.15.jar
+7f7af402a000-7f7af402d000 r--s 0000f000 08:0a 3565563                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-producers/2.15/cb9261e680cf2e0a9e1f0693f92b671781cb9f96/dagger-producers-2.15.jar
+7f7af402d000-7f7af403c000 r--s 000e7000 08:0a 3565562                    /home/proxima/.gradle/caches/modules-2/files-2.1/android.arch.persistence.room/compiler/1.1.0/e7dbc2fdf7fc86b0275ea5198616d5c764238a11/compiler-1.1.0.jar
+7f7af403c000-7f7af404a000 r--s 000ca000 08:0a 3565564                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-compiler/2.15/c114d70b9a4e814132fc147e8b79b1a294e5c2db/dagger-compiler-2.15.jar
+7f7af404a000-7f7af405e000 r--s 00129000 08:0a 3565337                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.jcodec/jcodec/0.1.9/d874724f18c8ebc54931d1ab9b4603b7c6a7cf93/jcodec-0.1.9.jar
+7f7af405e000-7f7af4060000 r--s 00008000 08:0a 3551559                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar
+7f7af4060000-7f7af4065000 r--s 00042000 08:0a 3565469                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-annotation-processing-gradle/1.3.0/d348139d1750895f6081773c5ef6392cba7139ae/kotlin-annotation-processing-gradle-1.3.0.jar
+7f7af4065000-7f7af406c000 r--s 0004b000 08:0a 3565471                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-android-extensions/1.3.0/87970b36b9e1855d0d0e4942865f63a1015026c9/kotlin-android-extensions-1.3.0.jar
+7f7af406c000-7f7af406d000 r--s 00003000 08:0a 3565569                    /home/proxima/.gradle/caches/modules-2/files-2.1/android.arch.persistence.room/migration/1.1.0/4b00ca71ba10fb4bb956e17dc80602926c1b9023/migration-1.1.0.jar
+7f7af406d000-7f7af406f000 r--s 00001000 08:0a 3565336                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.jcodec/jcodec-android/0.1.9/390f4672af45d022b05015e21388e6836178f0bb/jcodec-android-0.1.9.jar
+7f7af406f000-7f7af4071000 r--s 00003000 08:0a 3565335                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.squareup.mimecraft/mimecraft/1.1.1/66f73c3e42fa4658ef1cbae8b1ebefdaa856a23c/mimecraft-1.1.1.jar
+7f7af4071000-7f7af4073000 r--s 00001000 08:0a 3565513                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-android-extensions-runtime/1.3.0/b875cb8ed8cf337c828aba19c00c55b69d403461/kotlin-android-extensions-runtime-1.3.0.jar
+7f7af4073000-7f7af4075000 r--s 00005000 08:0a 3551557                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-applinks/1.4.0/8ad21bf21784dacce5f2043afb97218cc377e835/bolts-applinks-1.4.0.jar
+7f7af4075000-7f7af4275000 rw-p 00000000 00:00 0 
+7f7af4275000-7f7af4278000 ---p 00000000 00:00 0 
+7f7af4278000-7f7af4376000 rw-p 00000000 00:00 0 
+7f7af4376000-7f7af4379000 ---p 00000000 00:00 0 
+7f7af4379000-7f7af4677000 rw-p 00000000 00:00 0 
+7f7af4677000-7f7af467a000 ---p 00000000 00:00 0 
+7f7af467a000-7f7af4778000 rw-p 00000000 00:00 0 
+7f7af4778000-7f7af477b000 ---p 00000000 00:00 0 
+7f7af477b000-7f7af4879000 rw-p 00000000 00:00 0 
+7f7af4879000-7f7af487c000 ---p 00000000 00:00 0 
+7f7af487c000-7f7af497a000 rw-p 00000000 00:00 0 
+7f7af497a000-7f7af497d000 ---p 00000000 00:00 0 
+7f7af497d000-7f7af4a7b000 rw-p 00000000 00:00 0 
+7f7af4a7b000-7f7af4a7e000 ---p 00000000 00:00 0 
+7f7af4a7e000-7f7af4b7c000 rw-p 00000000 00:00 0 
+7f7af4b7c000-7f7af4b7f000 ---p 00000000 00:00 0 
+7f7af4b7f000-7f7af4c7d000 rw-p 00000000 00:00 0 
+7f7af4c7d000-7f7af4cf7000 r--s 010fd000 08:0a 2887671                    /home/proxima/Downloads/android-studio/jre/lib/tools.jar
+7f7af4cf7000-7f7af4d12000 r--s 00394000 08:0a 2887639                    /home/proxima/Downloads/android-studio/jre/jre/lib/ext/cldrdata.jar
+7f7af4d12000-7f7af7d13000 rw-p 00000000 00:00 0 
+7f7af7d13000-7f7af7d29000 r-xp 00000000 08:0a 2756936                    /home/proxima/Downloads/android-studio/jre/jre/lib/amd64/libnet.so
+7f7af7d29000-7f7af7d2a000 rw-p 00016000 08:0a 2756936                    /home/proxima/Downloads/android-studio/jre/jre/lib/amd64/libnet.so
+7f7af7d2a000-7f7af7eff000 r--s 01a6d000 08:0a 3565472                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.3.0/6e8167f9aab0f6cfec309c2722f72dc26572a782/kotlin-compiler-embeddable-1.3.0.jar
+7f7af7eff000-7f7af7f00000 ---p 00000000 00:00 0 
+7f7af7f00000-7f7af8000000 rw-p 00000000 00:00 0 
+7f7af8000000-7f7af8023000 rw-p 00000000 00:00 0 
+7f7af8023000-7f7afc000000 ---p 00000000 00:00 0 
+7f7afc000000-7f7afc001000 r--s 00000000 08:0a 3547936                    /home/proxima/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar
+7f7afc001000-7f7afc002000 r--s 00000000 08:0a 2763072                    /home/proxima/.gradle/caches/transforms-1/files-1.1/play-services-wearable-license-12.0.0.aar/e2315c39af587c4df4ec3cc5bc2de97a/jars/classes.jar
+7f7afc002000-7f7afc005000 r--s 0001c000 08:0a 3565567                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-spi/2.15/b2a7a008233795b6a279c901485b0269549972d6/dagger-spi-2.15.jar
+7f7afc005000-7f7afc006000 r--s 00000000 08:0a 3551556                    /home/proxima/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.4.0/cc174c559b5177982887bf6e1b76003aebad9516/bolts-android-1.4.0.jar
+7f7afc006000-7f7afc00b000 r--s 0009a000 08:0a 2756949                    /home/proxima/Downloads/android-studio/jre/jre/lib/jsse.jar
+7f7afc00b000-7f7afc015000 r--s 00116000 08:0a 2887646                    /home/proxima/Downloads/android-studio/jre/jre/lib/ext/localedata.jar
+7f7afc015000-7f7afc018000 ---p 00000000 00:00 0 
+7f7afc018000-7f7afc116000 rw-p 00000000 00:00 0 
+7f7afc116000-7f7afc117000 ---p 00000000 00:00 0 
+7f7afc117000-7f7afc11a000 ---p 00000000 00:00 0 
+7f7afc11a000-7f7afc217000 rw-p 00000000 00:00 0 
+7f7afc217000-7f7afc218000 ---p 00000000 00:00 0 
+7f7afc218000-7f7afc21b000 ---p 00000000 00:00 0 
+7f7afc21b000-7f7afc318000 rw-p 00000000 00:00 0 
+7f7afc318000-7f7afc319000 ---p 00000000 00:00 0 
+7f7afc319000-7f7afc31c000 ---p 00000000 00:00 0 
+7f7afc31c000-7f7afc419000 rw-p 00000000 00:00 0 
+7f7afc419000-7f7afc41c000 ---p 00000000 00:00 0 
+7f7afc41c000-7f7afc51a000 rw-p 00000000 00:00 0 
+7f7afc51a000-7f7afc7f8000 r--p 00000000 08:0a 5802692                    /usr/lib/locale/locale-archive
+7f7afc7f8000-7f7afc7fb000 ---p 00000000 00:00 0 
+7f7afc7fb000-7f7afc8f9000 rw-p 00000000 00:00 0 
+7f7afc8f9000-7f7afc8fc000 ---p 00000000 00:00 0 
+7f7afc8fc000-7f7afc9fa000 rw-p 00000000 00:00 0 
+7f7afc9fa000-7f7afc9fb000 ---p 00000000 00:00 0 
+7f7afc9fb000-7f7afd000000 rw-p 00000000 00:00 0 
+7f7afd000000-7f7b02080000 rwxp 00000000 00:00 0 
+7f7b02080000-7f7b0c000000 ---p 00000000 00:00 0 
+7f7b0c000000-7f7b0c3ef000 rw-p 00000000 00:00 0 
+7f7b0c3ef000-7f7b10000000 ---p 00000000 00:00 0 
+7f7b10000000-7f7b10002000 r--s 00003000 08:0a 3547931                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar
+7f7b10002000-7f7b10009000 r--s 0001e000 08:0a 3565516                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.0/84a2e0288dc17cd64d692eb1e5e0de8cd5ff0846/kotlin-stdlib-common-1.3.0.jar
+7f7b10009000-7f7b10019000 r-xp 00000000 08:0a 2756927                    /home/proxima/Downloads/android-studio/jre/jre/lib/amd64/libnio.so
+7f7b10019000-7f7b1001a000 rw-p 00010000 08:0a 2756927                    /home/proxima/Downloads/android-studio/jre/jre/lib/amd64/libnio.so
+7f7b1001a000-7f7b1002d000 r--s 0010e000 08:0a 3565515                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.0/a134b0cfe9bb44f98b0b3e889cda07923eea9428/kotlin-stdlib-1.3.0.jar
+7f7b1002d000-7f7b10063000 r--s 00250000 08:0a 3565540                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.3.0/6fd129fd9ba8581f2cb9c58bfd431dda4ee0457e/kotlin-reflect-1.3.0.jar
+7f7b10063000-7f7b10b9f000 rw-p 00000000 00:00 0 
+7f7b10b9f000-7f7b10d70000 r--s 03c8a000 08:0a 2756903                    /home/proxima/Downloads/android-studio/jre/jre/lib/rt.jar
+7f7b10d70000-7f7b11e35000 rw-p 00000000 00:00 0 
+7f7b11e35000-7f7b11e36000 ---p 00000000 00:00 0 
+7f7b11e36000-7f7b11f36000 rw-p 00000000 00:00 0 
+7f7b11f36000-7f7b11f37000 ---p 00000000 00:00 0 
+7f7b11f37000-7f7b12037000 rw-p 00000000 00:00 0 
+7f7b12037000-7f7b12038000 ---p 00000000 00:00 0 
+7f7b12038000-7f7b12138000 rw-p 00000000 00:00 0 
+7f7b12138000-7f7b12139000 ---p 00000000 00:00 0 
+7f7b12139000-7f7b122da000 rw-p 00000000 00:00 0 
+7f7b122da000-7f7b12787000 ---p 00000000 00:00 0 
+7f7b12787000-7f7b12828000 rw-p 00000000 00:00 0 
+7f7b12828000-7f7b12cd4000 ---p 00000000 00:00 0 
+7f7b12cd4000-7f7b12f74000 rw-p 00000000 00:00 0 
+7f7b12f74000-7f7b12f7b000 ---p 00000000 00:00 0 
+7f7b12f7b000-7f7b130be000 rw-p 00000000 00:00 0 
+7f7b130be000-7f7b1333c000 ---p 00000000 00:00 0 
+7f7b1333c000-7f7b13347000 r-xp 00000000 08:0a 3412849                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f7b13347000-7f7b13546000 ---p 0000b000 08:0a 3412849                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f7b13546000-7f7b13547000 r--p 0000a000 08:0a 3412849                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f7b13547000-7f7b13548000 rw-p 0000b000 08:0a 3412849                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7f7b13548000-7f7b1354e000 rw-p 00000000 00:00 0 
+7f7b1354e000-7f7b13565000 r-xp 00000000 08:0a 3412843                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f7b13565000-7f7b13764000 ---p 00017000 08:0a 3412843                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f7b13764000-7f7b13765000 r--p 00016000 08:0a 3412843                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f7b13765000-7f7b13766000 rw-p 00017000 08:0a 3412843                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7f7b13766000-7f7b13768000 rw-p 00000000 00:00 0 
+7f7b13768000-7f7b13773000 r-xp 00000000 08:0a 3412860                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f7b13773000-7f7b13972000 ---p 0000b000 08:0a 3412860                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f7b13972000-7f7b13973000 r--p 0000a000 08:0a 3412860                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f7b13973000-7f7b13974000 rw-p 0000b000 08:0a 3412860                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7f7b13974000-7f7b1397c000 r-xp 00000000 08:0a 3412845                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f7b1397c000-7f7b13b7c000 ---p 00008000 08:0a 3412845                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f7b13b7c000-7f7b13b7d000 r--p 00008000 08:0a 3412845                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f7b13b7d000-7f7b13b7e000 rw-p 00009000 08:0a 3412845                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7f7b13b7e000-7f7b13b85000 r-xp 00000000 08:0a 3412900                    /lib/x86_64-linux-gnu/librt-2.27.so
+7f7b13b85000-7f7b13d84000 ---p 00007000 08:0a 3412900                    /lib/x86_64-linux-gnu/librt-2.27.so
+7f7b13d84000-7f7b13d85000 r--p 00006000 08:0a 3412900                    /lib/x86_64-linux-gnu/librt-2.27.so
+7f7b13d85000-7f7b13d86000 rw-p 00007000 08:0a 3412900                    /lib/x86_64-linux-gnu/librt-2.27.so
+7f7b13d86000-7f7b13f23000 r-xp 00000000 08:0a 3412822                    /lib/x86_64-linux-gnu/libm-2.27.so
+7f7b13f23000-7f7b14122000 ---p 0019d000 08:0a 3412822                    /lib/x86_64-linux-gnu/libm-2.27.so
+7f7b14122000-7f7b14123000 r--p 0019c000 08:0a 3412822                    /lib/x86_64-linux-gnu/libm-2.27.so
+7f7b14123000-7f7b14124000 rw-p 0019d000 08:0a 3412822                    /lib/x86_64-linux-gnu/libm-2.27.so
+7f7b14124000-7f7b14d3c000 r-xp 00000000 08:0a 2887627                    /home/proxima/Downloads/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7f7b14d3c000-7f7b14e0b000 rw-p 00c18000 08:0a 2887627                    /home/proxima/Downloads/android-studio/jre/jre/lib/amd64/server/libjvm.so
+7f7b14e0b000-7f7b14e50000 rw-p 00000000 00:00 0 
+7f7b14e50000-7f7b15037000 r-xp 00000000 08:0a 3412759                    /lib/x86_64-linux-gnu/libc-2.27.so
+7f7b15037000-7f7b15237000 ---p 001e7000 08:0a 3412759                    /lib/x86_64-linux-gnu/libc-2.27.so
+7f7b15237000-7f7b1523b000 r--p 001e7000 08:0a 3412759                    /lib/x86_64-linux-gnu/libc-2.27.so
+7f7b1523b000-7f7b1523d000 rw-p 001eb000 08:0a 3412759                    /lib/x86_64-linux-gnu/libc-2.27.so
+7f7b1523d000-7f7b15241000 rw-p 00000000 00:00 0 
+7f7b15241000-7f7b15244000 r-xp 00000000 08:0a 3412782                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7f7b15244000-7f7b15443000 ---p 00003000 08:0a 3412782                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7f7b15443000-7f7b15444000 r--p 00002000 08:0a 3412782                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7f7b15444000-7f7b15445000 rw-p 00003000 08:0a 3412782                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7f7b15445000-7f7b1545f000 r-xp 00000000 08:0a 3412892                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f7b1545f000-7f7b1565e000 ---p 0001a000 08:0a 3412892                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f7b1565e000-7f7b1565f000 r--p 00019000 08:0a 3412892                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f7b1565f000-7f7b15660000 rw-p 0001a000 08:0a 3412892                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7f7b15660000-7f7b15664000 rw-p 00000000 00:00 0 
+7f7b15664000-7f7b1568b000 r-xp 00000000 08:0a 3412731                    /lib/x86_64-linux-gnu/ld-2.27.so
+7f7b1568b000-7f7b1568c000 r--s 00001000 08:0a 3565392                    /home/proxima/.gradle/caches/modules-2/files-2.1/javax.annotation/jsr250-api/1.0/5025422767732a1ab45d93abfea846513d742dcf/jsr250-api-1.0.jar
+7f7b1568c000-7f7b1568e000 r--s 00009000 08:0a 3565474                    /home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/1.3.0/c7173ea6208fa189fb56d679624fbc5e2026187f/kotlin-script-runtime-1.3.0.jar
+7f7b1568e000-7f7b15696000 r-xp 00000000 08:0a 2756907                    /home/proxima/Downloads/android-studio/jre/jre/lib/amd64/libmanagement.so
+7f7b15696000-7f7b15697000 rw-p 00007000 08:0a 2756907                    /home/proxima/Downloads/android-studio/jre/jre/lib/amd64/libmanagement.so
+7f7b15697000-7f7b1570f000 rw-p 00000000 00:00 0 
+7f7b1570f000-7f7b15729000 r-xp 00000000 08:0a 2756935                    /home/proxima/Downloads/android-studio/jre/jre/lib/amd64/libzip.so
+7f7b15729000-7f7b1572a000 rw-p 00019000 08:0a 2756935                    /home/proxima/Downloads/android-studio/jre/jre/lib/amd64/libzip.so
+7f7b1572a000-7f7b15755000 r-xp 00000000 08:0a 2756934                    /home/proxima/Downloads/android-studio/jre/jre/lib/amd64/libjava.so
+7f7b15755000-7f7b15757000 rw-p 0002b000 08:0a 2756934                    /home/proxima/Downloads/android-studio/jre/jre/lib/amd64/libjava.so
+7f7b15757000-7f7b15758000 ---p 00000000 00:00 0 
+7f7b15758000-7f7b1575b000 ---p 00000000 00:00 0 
+7f7b1575b000-7f7b1585a000 rw-p 00000000 00:00 0 
+7f7b1585a000-7f7b1586f000 r-xp 00000000 08:0a 2756938                    /home/proxima/Downloads/android-studio/jre/jre/lib/amd64/jli/libjli.so
+7f7b1586f000-7f7b15870000 rw-p 00015000 08:0a 2756938                    /home/proxima/Downloads/android-studio/jre/jre/lib/amd64/jli/libjli.so
+7f7b15870000-7f7b15878000 rw-s 00000000 08:0a 3548110                    /tmp/hsperfdata_proxima/11166
+7f7b15878000-7f7b15879000 rw-p 00000000 00:00 0 
+7f7b15879000-7f7b1587a000 ---p 00000000 00:00 0 
+7f7b1587a000-7f7b15887000 r-xp 00000000 08:0a 2756916                    /home/proxima/Downloads/android-studio/jre/jre/lib/amd64/libverify.so
+7f7b15887000-7f7b15889000 rw-p 0000c000 08:0a 2756916                    /home/proxima/Downloads/android-studio/jre/jre/lib/amd64/libverify.so
+7f7b15889000-7f7b1588b000 rw-p 00000000 00:00 0 
+7f7b1588b000-7f7b1588c000 r--p 00027000 08:0a 3412731                    /lib/x86_64-linux-gnu/ld-2.27.so
+7f7b1588c000-7f7b1588d000 rw-p 00028000 08:0a 3412731                    /lib/x86_64-linux-gnu/ld-2.27.so
+7f7b1588d000-7f7b1588e000 rw-p 00000000 00:00 0 
+7ffd6dfde000-7ffd6dfff000 rw-p 00000000 00:00 0                          [stack]
+7ffd6e1f2000-7ffd6e1f5000 r--p 00000000 00:00 0                          [vvar]
+7ffd6e1f5000-7ffd6e1f7000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Djava.awt.headless=true -Djava.rmi.server.hostname=127.0.0.1 -Xmx4072m -XX:MaxPermSize=512m -Dkotlin.environment.keepalive 
+java_command: org.jetbrains.kotlin.daemon.KotlinCompileDaemon --daemon-runFilesPath /home/proxima/.local/share/kotlin/daemon --daemon-autoshutdownIdleSeconds=7200 --daemon-compilerClasspath /home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.3.0/6e8167f9aab0f6cfec309c2722f72dc26572a782/kotlin-compiler-embeddable-1.3.0.jar:/home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.3.0/6fd129fd9ba8581f2cb9c58bfd431dda4ee0457e/kotlin-reflect-1.3.0.jar:/home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.0/a134b0cfe9bb44f98b0b3e889cda07923eea9428/kotlin-stdlib-1.3.0.jar:/home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/1.3.0/c7173ea6208fa189fb56d679624fbc5e2026187f/kotlin-script-runtime-1.3.0.jar:/home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.0/84a2e0288dc17cd64d692eb1e5e0de8cd5ff0846/kotlin-stdlib-common-1.3.0.jar:/home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar:/home/proxima/Downloads/android-studio/jre/lib/tools.jar
+java_class_path (initial): /home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.3.0/6e8167f9aab0f6cfec309c2722f72dc26572a782/kotlin-compiler-embeddable-1.3.0.jar:/home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.3.0/6fd129fd9ba8581f2cb9c58bfd431dda4ee0457e/kotlin-reflect-1.3.0.jar:/home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.0/a134b0cfe9bb44f98b0b3e889cda07923eea9428/kotlin-stdlib-1.3.0.jar:/home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/1.3.0/c7173ea6208fa189fb56d679624fbc5e2026187f/kotlin-script-runtime-1.3.0.jar:/home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.0/84a2e0288dc17cd64d692eb1e5e0de8cd5ff0846/kotlin-stdlib-common-1.3.0.jar:/home/proxima/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar:/home/proxima/Downloads/android-studio/jre/lib/tools.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/home/proxima/.local/bin:/home/proxima/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/proxima/.dotnet/tools
+USERNAME=proxima
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xa00760], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xa00760], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x863090], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x863090], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x863090], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x863090], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x862f60], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x863150], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x863150], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x863150], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x863150], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=18.04
+DISTRIB_CODENAME=bionic
+DISTRIB_DESCRIPTION="Ubuntu 18.04.2 LTS"
+
+uname:Linux 4.18.0-17-generic #18~18.04.1-Ubuntu SMP Fri Mar 15 15:27:12 UTC 2019 x86_64
+libc:glibc 2.27 NPTL 2.27 
+rlimit: STACK 8192k, CORE 0k, NPROC 31446, NOFILE 1048576, AS infinity
+load average:4.55 4.35 3.67
+
+/proc/meminfo:
+MemTotal:        8094632 kB
+MemFree:          180788 kB
+MemAvailable:     164176 kB
+Buffers:           18100 kB
+Cached:           450296 kB
+SwapCached:           96 kB
+Active:          6488208 kB
+Inactive:        1076628 kB
+Active(anon):    6392116 kB
+Inactive(anon):  1000648 kB
+Active(file):      96092 kB
+Inactive(file):    75980 kB
+Unevictable:          16 kB
+Mlocked:              16 kB
+SwapTotal:          1020 kB
+SwapFree:              0 kB
+Dirty:               148 kB
+Writeback:             0 kB
+AnonPages:       7096220 kB
+Mapped:           145152 kB
+Shmem:            296496 kB
+Slab:             199352 kB
+SReclaimable:      69456 kB
+SUnreclaim:       129896 kB
+KernelStack:       15568 kB
+PageTables:        60604 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     4048336 kB
+Committed_AS:   13164908 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:      334592 kB
+DirectMap2M:     7981056 kB
+DirectMap1G:     1048576 kB
+
+
+CPU:total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 69 stepping 1, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 69
+model name	: Intel(R) Core(TM) i3-4030U CPU @ 1.90GHz
+stepping	: 1
+microcode	: 0x24
+cpu MHz		: 1789.156
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt dtherm arat pln pts flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf
+bogomips	: 3791.14
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 69
+model name	: Intel(R) Core(TM) i3-4030U CPU @ 1.90GHz
+stepping	: 1
+microcode	: 0x24
+cpu MHz		: 1561.419
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt dtherm arat pln pts flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf
+bogomips	: 3791.14
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 69
+model name	: Intel(R) Core(TM) i3-4030U CPU @ 1.90GHz
+stepping	: 1
+microcode	: 0x24
+cpu MHz		: 1793.846
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt dtherm arat pln pts flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf
+bogomips	: 3791.14
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 69
+model name	: Intel(R) Core(TM) i3-4030U CPU @ 1.90GHz
+stepping	: 1
+microcode	: 0x24
+cpu MHz		: 1775.426
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt dtherm arat pln pts flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf
+bogomips	: 3791.14
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 8094632k(180788k free), swap 1020k(0k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.152-b16-5323222) for linux-amd64 JRE (1.8.0_152-release-1343-b16-5323222), built by "android-build" with gcc 4.8
+
+time: Tue Apr 23 20:15:08 2019
+elapsed time: 1206 seconds (0d 0h 20m 6s)
+
